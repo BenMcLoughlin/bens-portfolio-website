@@ -26,26 +26,22 @@ export const Footer = () => {
                 <LinkedInIcon />
                 <InstagramIcon />
                 <Hr /> */}
-                <Link
-                    href="https://apps.apple.com/us/app/shophopper/id1604915084"
-                    onClick={() => _logClick('app_store')}>
+                <Link href="https://apps.apple.com/us/app/shophopper/id1604915084">
                     <a target="_blank" rel="noopener noreferrer">
                         <AppleIcon />
                     </a>
                 </Link>
-                <Link
-                    href="https://play.google.com/store/apps/details?id=com.shophopper.app"
-                    onClick={() => _logClick('app_store')}>
+                <Link href="https://play.google.com/store/apps/details?id=com.shophopper.app">
                     <a target="_blank" rel="noopener noreferrer">
                         <GooglePlayIcon />
                     </a>
                 </Link>
-                <Link href="https://github.com/BenMcLoughlin" onClick={() => _logClick('app_store')}>
+                <Link href="https://github.com/BenMcLoughlin">
                     <a target="_blank" rel="noopener noreferrer">
                         <GithubIcon />
                     </a>
                 </Link>
-                <Link href="https://github.com/BenMcLoughlin" onClick={() => _logClick('app_store')}>
+                <Link href="https://github.com/BenMcLoughlin">
                     <a target="_blank" rel="noopener noreferrer">
                         <LinkedinIcon />
                     </a>

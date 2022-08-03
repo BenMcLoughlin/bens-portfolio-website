@@ -44,119 +44,131 @@ export default function Home() {
     return (
         <Wrapper>
             <Header />
-            {/* <RadialGradient top={30} right={-20} />
+            <Content>
+                {/* <RadialGradient top={30} right={-20} />
             <RadialGradient top={120} right={20} />
             <RadialGradient top={120} left={-20} /> */}
-            <HeroSection>
-                <Column width="50%" mobile_width={'90%'} height="90%" alignItems="flex-start" padding={20}>
-                    <h1>Ben McLoughlin</h1>
-                    <Text fontStyle="italic" fontWeight="100" fontSize={20} mobile_fontSize={16} mobile_width={'100%'}>
-                        Full Stack Web and Mobile Developer
-                    </Text>
-                    <Text fontSize={16} textAlign="left" width={'100%'} mobile_width={'100%'}>
-                        Ben&apos;s on a mission to track 10,000 hours of focused coding time. Check out the graph below
-                        to see how he&apos;s been spending his time.
-                    </Text>
-                </Column>
-                <Column alignItems="center" width="30%" mobile_width={'80%'} height="100%" padding={20}>
-                    <Text fontSize={90} width="100%" textAlign="left" mobile_width="90%" mobile_fontSize={60}>
-                        4.5k
-                    </Text>
-                    <RotatedLine />
-                    <Text fontSize={90} width="100%" textAlign="right" mobile_fontSize={60}>
-                        10k
-                    </Text>
-                </Column>
-            </HeroSection>
-            <Section height={400} marginTop={50} width="100%" flexDirection="column">
-                <Chart />
-            </Section>
-            <Section width="90%" flexDirection="column">
-                <SectionHeader>Latest Projects</SectionHeader>
-                <ProjectCard
-                    title="ShopHopper Mobile App"
-                    description=" This app enables users to shop for local fashion apparel in one place. We gather the inventories of
+                <HeroSection>
+                    <Column width="50%" mobile_width={'90%'} height="90%" alignItems="flex-start" padding={20}>
+                        <h1>Ben McLoughlin</h1>
+                        <Text
+                            fontStyle="italic"
+                            fontWeight="100"
+                            fontSize={20}
+                            mobile_fontSize={16}
+                            mobile_width={'100%'}>
+                            Full Stack Web and Mobile Developer
+                        </Text>
+                        <Text fontSize={16} textAlign="left" width={'100%'} mobile_width={'100%'}>
+                            Ben&apos;s on a mission to track 10,000 hours of focused coding time. Check out the graph
+                            below to see how he&apos;s been spending his time.
+                        </Text>
+                    </Column>
+                    <Column
+                        alignItems="center"
+                        width="30%"
+                        mobile_width={'75%'}
+                        justifyContent="space-around"
+                        height="100%"
+                        padding={20}>
+                        <Text fontSize={90} width="100%" textAlign="left" mobile_width="90%" mobile_fontSize={60}>
+                            4.5k
+                        </Text>
+                        <RotatedLine />
+                        <Text fontSize={90} width="100%" textAlign="right" mobile_fontSize={60}>
+                            10k
+                        </Text>
+                    </Column>
+                </HeroSection>
+                <Section height={400} marginTop={50} width="100%" flexDirection="column">
+                    <Chart />
+                </Section>
+                <Section width="90%" flexDirection="column">
+                    <SectionHeader>Latest Projects</SectionHeader>
+                    <ProjectCard
+                        title="ShopHopper Mobile App"
+                        description=" This app enables users to shop for local fashion apparel in one place. We gather the inventories of
                     local boutique stores and copy the data into our database. Ben built the app using React Native and Expo."
-                    teamSize="3"
-                    dailyUsers="98"
-                    hours="742"
-                    role="Full-stack mobile Developer"
-                    date="Nov 2021 - July2022"
-                    stack={['ReactNative', 'Expo', 'Sentry', 'IOS', 'Android']}
-                    align="left"
-                    image={shophopper_app_screenshot}
-                />
-                <ProjectCard
-                    title="ShopHopper Website"
-                    description=" This website serves as the landing page for ShopHopper with the goal of getting them to
+                        teamSize="3"
+                        dailyUsers="98"
+                        hours="742"
+                        role="Full-stack mobile Developer"
+                        date="Nov 2021 - July2022"
+                        stack={['ReactNative', 'Expo', 'Sentry', 'IOS', 'Android']}
+                        align="left"
+                        image={shophopper_app_screenshot}
+                    />
+                    <ProjectCard
+                        title="ShopHopper Website"
+                        description=" This website serves as the landing page for ShopHopper with the goal of getting them to
                     download the mobile app."
-                    teamSize="4"
-                    role="Front-end Developer"
-                    dailyUsers="44"
-                    hours="67"
-                    date="April 2022"
-                    stack={['React', 'NextJs', 'Figma', 'StyledComponents']}
-                    align="right"
-                    image={shophopper_website_screenshot}
-                />
-                <ProjectCard
-                    title="ShopHopper Database"
-                    description="Ben helped write scripts that gather the inventories of local boutique stores and copy the data into our database."
-                    teamSize="4"
-                    dailyUsers="44"
-                    hours="67"
-                    date="April 2022"
-                    stack={['AWS', 'PostgreSQL', 'Prisma', 'NextJs']}
-                    align="left"
-                    image={shophopper_db_screenshot}
-                />
+                        teamSize="4"
+                        role="Front-end Developer"
+                        dailyUsers="44"
+                        hours="67"
+                        date="April 2022"
+                        stack={['React', 'NextJs', 'Figma', 'StyledComponents']}
+                        align="right"
+                        image={shophopper_website_screenshot}
+                    />
+                    <ProjectCard
+                        title="ShopHopper Database"
+                        description="Ben helped write scripts that gather the inventories of local boutique stores and copy the data into our database."
+                        teamSize="4"
+                        dailyUsers="44"
+                        hours="67"
+                        date="April 2022"
+                        stack={['AWS', 'PostgreSQL', 'Prisma', 'NextJs']}
+                        align="left"
+                        image={shophopper_db_screenshot}
+                    />
 
-                <ProjectCard
-                    title="Financial Planning Software"
-                    description="Ben built a financial planning platform that uses javascript to provide real time web brower responses to changes in a financial plan. "
-                    teamSize="4"
-                    dailyUsers="44"
-                    hours="67"
-                    date="April 2022"
-                    stack={['React', 'MongoDB', 'Express', 'D3']}
-                    align="right"
-                    image={savvy_plan_screenshot}
-                />
-            </Section>
-            <Section width="90%" padding={40} flexDirection="column">
-                <SectionHeader name="contact" id="contact">
-                    Reach out
-                </SectionHeader>
-                <Form>
-                    {isLoading ? (
-                        <Spinner />
-                    ) : (
-                        <Column width="100%" alignItems="flex-end">
-                            <Row justifyContent="space-between" width="100%">
-                                <FormText
-                                    value={name}
-                                    label={'First Name'}
-                                    handleChange={(e) => setName(e.target.value)}
+                    <ProjectCard
+                        title="Financial Planning Software"
+                        description="Ben built a financial planning platform that uses javascript to provide real time web brower responses to changes in a financial plan. "
+                        teamSize="4"
+                        dailyUsers="44"
+                        hours="67"
+                        date="April 2022"
+                        stack={['React', 'MongoDB', 'Express', 'D3']}
+                        align="right"
+                        image={savvy_plan_screenshot}
+                    />
+                </Section>
+                <Section width="90%" padding={40} flexDirection="column">
+                    <SectionHeader name="contact" id="contact">
+                        Reach out
+                    </SectionHeader>
+                    <Form>
+                        {isLoading ? (
+                            <Spinner />
+                        ) : (
+                            <Column width="100%" alignItems="flex-end">
+                                <Row justifyContent="space-between" width="100%">
+                                    <FormText
+                                        value={name}
+                                        label={'First Name'}
+                                        handleChange={(e) => setName(e.target.value)}
+                                    />
+                                    <FormText
+                                        value={email}
+                                        label={'Email'}
+                                        handleChange={(e) => setEmail(e.target.value)}
+                                    />
+                                </Row>
+                                <TextArea
+                                    className="contact"
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                    minRows={10}
+                                    label="message"
                                 />
-                                <FormText
-                                    value={email}
-                                    label={'Email'}
-                                    handleChange={(e) => setEmail(e.target.value)}
-                                />
-                            </Row>
-                            <TextArea
-                                className="contact"
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                                minRows={10}
-                                label="message"
-                            />
-                            <Button title="Shoot" size={18} onClick={(e) => sendEmail(e)} />
-                        </Column>
-                    )}
-                </Form>
-            </Section>
-
+                                <Button title="Shoot" size={18} onClick={(e) => sendEmail(e)} />
+                            </Column>
+                        )}
+                    </Form>
+                </Section>
+            </Content>
             <Footer />
         </Wrapper>
     );
@@ -171,6 +183,19 @@ const Wrapper = styled.div`
     flex-direction: column;
     position: relative;
     gap: 5px;
+`;
+const Content = styled.div`
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 5px;
+    @media (min-width: 1400px) {
+        flex-direction: column;
+        width: 85%;
+        margin: 0 auto;
+    }
 `;
 
 const RadialGradient = styled.div`

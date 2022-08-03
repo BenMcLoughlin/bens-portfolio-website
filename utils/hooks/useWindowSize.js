@@ -21,5 +21,5 @@ export function useWindowSize() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    return [windowSize.width, windowSize.height];
+    return [Math.min(windowSize.width, 1500), windowSize.height];
 }

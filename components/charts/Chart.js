@@ -27,22 +27,24 @@ export const Chart = ({ year, title }) => {
 
     return (
         <Wrapper>
-            <Row alignContent="center" marginLeft="12%" mobile_marginLeft="2%">
-                <YearCell>
-                    <Year fontSize={25}>{selectedYear}</Year>
-                    <Hr />
-                    <Hours fontSize={14}>{total} hrs</Hours>
-                </YearCell>
-                <Vr />
-                {Object.entries(tasks).map(([task, value]) => (
-                    <Cell>
-                        <Task>{task}</Task>
+            {width > 768 && (
+                <Row alignContent="center" marginLeft="12%" mobile_marginLeft="2%">
+                    <YearCell>
+                        <Year fontSize={25}>{selectedYear}</Year>
                         <Hr />
-                        <Circle color={chartColors[task]} />
-                        <Hours>{value.toFixed()} hrs</Hours>
-                    </Cell>
-                ))}
-            </Row>
+                        <Hours fontSize={14}>{total} hrs</Hours>
+                    </YearCell>
+                    <Vr />
+                    {Object.entries(tasks).map(([task, value]) => (
+                        <Cell>
+                            <Task>{task}</Task>
+                            <Hr />
+                            <Circle color={chartColors[task]} />
+                            <Hours>{value.toFixed()} hrs</Hours>
+                        </Cell>
+                    ))}
+                </Row>
+            )}
 
             <Canvas id="chart" ref={canvasRef} />
             <Column width="100%" marginTop={50} alignItems="center">
@@ -65,6 +67,7 @@ const Wrapper = styled.div`
     gap: 10px;
     flex-direction: column;
     align-items: flex-start;
+    
 `;
 
 const Canvas = styled.div`
@@ -112,7 +115,7 @@ const Circle = styled.div`
     height: 10px;
     border-radius: 100%;
     position: absolute;
-    background: ${p => p.color};
+    background: ${(p) => p.color};
     bottom: 2px;
     left: 2px;
 `;

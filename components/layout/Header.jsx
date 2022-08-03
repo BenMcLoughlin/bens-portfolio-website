@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Button } from '../buttons/Button';
@@ -6,9 +6,12 @@ import ben_profile_photo from '../../public/assets/ben_profile_photo.png';
 import Image from 'next/image';
 import Head from 'next/head';
 import * as Scroll from 'react-scroll';
+import { useWindowSize } from '../../utils';
 
 export const Header = () => {
     const ScrollLink = Scroll.Link;
+    const [width, height] = useWindowSize();
+
     return (
         <Wrapper>
             <Head>
@@ -30,11 +33,13 @@ export const Header = () => {
                     <ScrollLink activeClass="active" to="contact" spy={true} smooth={true} offset={-50} duration={500}>
                         <Button title="Get In Touch" size={14} onClick={() => null} />
                     </ScrollLink>
-                    <Link href="https://github.com/BenMcLoughlin/bens-portfolio-website" passHref>
-                        <a target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                            <Button title="View This Repo" icon="github" size={14} onClick={() => null} />
-                        </a>
-                    </Link>
+                    {width > 768 && (
+                        <Link href="https://github.com/BenMcLoughlin/bens-portfolio-website" passHref>
+                            <a target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                                <Button title="View This Repo" icon="github" size={14} onClick={() => null} />
+                            </a>
+                        </Link>
+                    )}
                 </Buttons>
             </Right>
         </Wrapper>

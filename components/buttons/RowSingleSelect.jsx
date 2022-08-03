@@ -42,6 +42,9 @@ const Option = styled.div`
     align-items: center;
     justify-content: center;
     color: ${(p) => (p.selected ? 'white' : 'black')};
+    @media (max-width: 768px) {
+        width: 55px;
+    }
 `;
 const Options = styled.div`
     display: flex;
@@ -62,6 +65,11 @@ const Pill = styled.div`
         transition: all .3s ease;
         border-radius: 5px;
         animation: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0s 1 normal forwards running fmdUjs;
+        @media (max-width: 768px) {
+            transform: ${(props) => `translate(${props.positionIndex * 55}px, 0)`};
+            left: 0px;
+            min-width: 55px;
+        }
    
 }
 `;
