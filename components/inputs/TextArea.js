@@ -31,7 +31,7 @@ export const StyledTextArea = styled.div`
         width: 100%;
         padding: 8px 12px 9px;
         border-radius: 7px;
-        border: 1px solid ${(props) => props.theme.color.brand.tertiary};
+        border: 1px solid ${(props) => props.theme.color.brand.primary};
         font-size: 18px;
         &:focus {
             outline: none;
@@ -63,7 +63,7 @@ const Label = styled.label`
     justify-content: center;
     padding: 5px;
     align-items: center;
-    color:  ${(props) => props.theme.color.brand.tertiary};
+    color:  ${(props) => props.theme.color.brand.primary};
     transition: all .5s ease;
     top: -12px;
     font-size: 14px;

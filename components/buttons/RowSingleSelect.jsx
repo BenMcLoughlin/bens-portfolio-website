@@ -57,7 +57,7 @@ const Pill = styled.div`
         height: 30px;
         top: -3px;
         left: 5px;
-        background-color: #4F9190;
+        background-color: ${(p) => p.theme.color.brand.primary};
         transform: ${(props) => `translate(${props.positionIndex * 70}px, 0)`};
         transition: all .3s ease;
         border-radius: 5px;

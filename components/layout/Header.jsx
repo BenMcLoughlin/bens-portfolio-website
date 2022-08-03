@@ -30,9 +30,9 @@ export const Header = () => {
                     <ScrollLink activeClass="active" to="contact" spy={true} smooth={true} offset={-50} duration={500}>
                         <Button title="Get In Touch" size={14} onClick={() => null} />
                     </ScrollLink>
-                    <Link href="https://github.com/BenMcLoughlin/portfolio-website" passHref>
-                        <a target="_blank" rel="noopener noreferrer">
-                            <Button title="View Repo" icon="github" size={14} onClick={() => null} />
+                    <Link href="https://github.com/BenMcLoughlin/bens-portfolio-website" passHref>
+                        <a target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                            <Button title="View This Repo" icon="github" size={14} onClick={() => null} />
                         </a>
                     </Link>
                 </Buttons>

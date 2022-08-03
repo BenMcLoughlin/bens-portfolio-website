@@ -58,7 +58,7 @@ export default function Home() {
                         to see how he&apos;s been spending his time.
                     </Text>
                 </Column>
-                <Column alignItems="center" width="50%" mobile_width={'80%'} height="100%" padding={20}>
+                <Column alignItems="center" width="30%" mobile_width={'80%'} height="100%" padding={20}>
                     <Text fontSize={90} width="100%" textAlign="left" mobile_width="90%" mobile_fontSize={60}>
                         4.5k
                     </Text>
@@ -68,7 +68,7 @@ export default function Home() {
                     </Text>
                 </Column>
             </HeroSection>
-            <Section height={400} width="100%" flexDirection="column">
+            <Section height={400} marginTop={50} width="100%" flexDirection="column">
                 <Chart />
             </Section>
             <Section width="90%" flexDirection="column">
@@ -151,7 +151,7 @@ export default function Home() {
                                 minRows={10}
                                 label="message"
                             />
-                            <Button title="Shoot" size={18} background={'tertiary'} onClick={(e) => sendEmail(e)} />
+                            <Button title="Shoot" size={18} onClick={(e) => sendEmail(e)} />
                         </Column>
                     )}
                 </Form>
