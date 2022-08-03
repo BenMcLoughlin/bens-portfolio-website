@@ -42,7 +42,7 @@ export default function Home() {
     };
 
     const [width] = useWindowSize();
-    console.log('/index.js - width: ', width);
+
     return (
         <Wrapper>
             <Gradient />
