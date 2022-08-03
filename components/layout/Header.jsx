@@ -56,7 +56,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: space-around;
     height: 65px;
-    z-index: 5;
+    z-index: 15;
     -webkit-box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
 `;

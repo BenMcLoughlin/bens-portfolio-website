@@ -68,6 +68,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     
+    
 `;
 
 const Canvas = styled.div`

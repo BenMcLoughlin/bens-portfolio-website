@@ -150,6 +150,7 @@ const Wrapper = styled.div`
         flex-direction: column;
         width: 100%;
         gap: 40px;
+        margin-top: 20px;
     }
 `;
 
@@ -218,35 +219,6 @@ const StackLabel = styled.div`
     display: flex;
 `;
 
-const WithHover = styled.div`
-    cursor: pointer;
-    position: relative;
-    z-index: 10;
-    &:hover ${StackLabel} {
-        opacity: 1;
-    }
-`;
-
-const Icons = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 25px;
-    gap: 10px;
-    color: ${(p) => p.theme.color.brand.tertiary};
-    @media (max-width: 768px) {
-        flex-direction: row;
-        width: 100%;
-    }
-`;
-const LinkWrapper = styled.div`
-    position: absolute;
-    bottom: 40px;
-    left: 20px;
-    cursor: pointer;
-`;
 const Hr = styled.div`
     height: 1px;
     width: 100%;

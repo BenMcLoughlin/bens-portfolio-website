@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Head from 'next/head';
-import Image from 'next/image';
+
 import styled from 'styled-components';
 import { Column, Row, Section, Text, Header, Footer, Chart, ProjectCard, Spinner, Button } from '../components';
 import { FormText, TextArea } from '../components/inputs';
@@ -9,6 +8,7 @@ import shophopper_app_screenshot from '../public/assets/shophopper_app_screensho
 import shophopper_website_screenshot from '../public/assets/shophopper_website_screenshot.png';
 import shophopper_db_screenshot from '../public/assets/shophopper_db_screenshot.png';
 import savvy_plan_screenshot from '../public/assets/savvy_plan_screenshot.png';
+import { useWindowSize } from '../utils';
 
 export default function Home() {
     const [name, setName] = useState('');
@@ -41,13 +41,17 @@ export default function Home() {
         setEmail('');
     };
 
+    const [width] = useWindowSize();
+    console.log('/index.js - width: ', width);
     return (
         <Wrapper>
+            <Gradient />
             <Header />
+
             <Content>
                 {/* <RadialGradient top={30} right={-20} />
-            <RadialGradient top={120} right={20} />
-            <RadialGradient top={120} left={-20} /> */}
+                <RadialGradient top={120} right={20} />
+                <RadialGradient top={120} left={-20} /> */}
                 <HeroSection>
                     <Column width="50%" mobile_width={'90%'} height="90%" alignItems="flex-start" padding={20}>
                         <h1>Ben McLoughlin</h1>
@@ -64,23 +68,25 @@ export default function Home() {
                             below to see how he&apos;s been spending his time.
                         </Text>
                     </Column>
-                    <Column
-                        alignItems="center"
-                        width="30%"
-                        mobile_width={'75%'}
-                        justifyContent="space-around"
-                        height="100%"
-                        padding={20}>
-                        <Text fontSize={90} width="100%" textAlign="left" mobile_width="90%" mobile_fontSize={60}>
-                            4.5k
-                        </Text>
-                        <RotatedLine />
-                        <Text fontSize={90} width="100%" textAlign="right" mobile_fontSize={60}>
-                            10k
-                        </Text>
-                    </Column>
+                    {width > 768 && (
+                        <Column
+                            alignItems="center"
+                            width="30%"
+                            mobile_width={'75%'}
+                            justifyContent="space-around"
+                            height="100%"
+                            padding={20}>
+                            <Text fontSize={90} width="100%" textAlign="left" mobile_width="90%" mobile_fontSize={60}>
+                                4.5k
+                            </Text>
+                            <RotatedLine />
+                            <Text fontSize={90} width="100%" textAlign="right" mobile_fontSize={60}>
+                                10k
+                            </Text>
+                        </Column>
+                    )}
                 </HeroSection>
-                <Section height={400} marginTop={50} width="100%" flexDirection="column">
+                <Section height={400} mobile_height={300} marginTop={50} width="100%" flexDirection="column">
                     <Chart />
                 </Section>
                 <Section width="90%" flexDirection="column">
@@ -197,29 +203,17 @@ const Content = styled.div`
         margin: 0 auto;
     }
 `;
-
-const RadialGradient = styled.div`
+const Gradient = styled.div`
     position: absolute;
-    top: ${(p) => p.top}px;
-    right: ${(p) => p.right}px;
-    left: ${(p) => p.left}px;
-    height: 500px;
-    width: 500px;
-    opacity: 0.4;
-    z-index: -1;
-    background: none;
-    background: radial-gradient(
-        circle,
-        rgba(56, 87, 97, 0.9990589985994398) 0%,
-        rgba(56, 87, 97, 0.3463979341736695) 0%,
-        rgba(255, 255, 255, 1) 65%
-    );
-`;
-
-const Hr = styled.div`
-    height: 1px;
+    top: 65px;
+    left: 0;
+    height: 100%;
     width: 100%;
-    background: ${(p) => p.theme.color.brand.primary};
+    padding-bottom: 380px;
+    z-index: -1;
+    background: -webkit-linear-gradient(bottom left, #f6f4f5, #ffffff);
+    background: -moz-linear-gradient(bottom left, #f6f4f5, #ffffff);
+    background: linear-gradient(to top right, #f6f4f5, #ffffff);
 `;
 
 const RotatedLine = styled.div`
@@ -240,9 +234,11 @@ const HeroSection = styled.div`
     padding-top: 100px;
     margin: 0 auto;
     justify-content: space-around;
+
     @media (max-width: 768px) {
         padding-top: 20px;
         flex-direction: column;
+        min-height: 200px;
         width: 100%;
     }
 `;
@@ -250,10 +246,14 @@ const HeroSection = styled.div`
 const SectionHeader = styled.div`
     color: ${(p) => p.theme.color.grey.dark};
     font-size: 50px;
-
     width: 100vw;
     padding: 20px;
     margin-bottom: 30px;
+    @media (max-width: 768px) {
+        font-size: 30px;
+        padding: 10px;
+        margin-top: 50px;
+    }
 `;
 
 const Form = styled.form`
@@ -266,7 +266,8 @@ const Form = styled.form`
     position: relative;
     flex-direction: column;
     @media (max-width: 768px) {
-        width: 100%;
+        width: 120%;
         padding: 5px;
+        
     }
 `;
