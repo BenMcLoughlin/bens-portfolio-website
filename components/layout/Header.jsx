@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Button } from '../buttons/Button';
@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import { Text } from '../';
 import * as Scroll from 'react-scroll';
+
 import { Github } from '@styled-icons/bootstrap/Github';
 import { LinkedinWithCircle } from '@styled-icons/entypo-social/LinkedinWithCircle';
 import { Menu } from '@styled-icons/evaicons-solid/Menu';
@@ -32,6 +33,7 @@ export const Header = () => {
                     url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
                 </style>
             </Head>
+
             {(width > 768 || menuOpen) && (
                 <>
                     <Left>
@@ -84,12 +86,13 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: space-around;
     height: 65px;
-    z-index: 5;
+    z-index: 15;
     -webkit-box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
     border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
     ${(p) => p.menuOpen && menuOpen};
     transition: all 0.3s ease;
+    background: radial-gradient(circle at right, #e7eced, #fcfcfc);
 `;
 const Left = styled.div`
     width: 20%;

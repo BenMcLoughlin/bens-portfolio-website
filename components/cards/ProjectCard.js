@@ -27,6 +27,7 @@ import shopify from '../../public/assets/shopify_icon.png';
 import Link from 'next/link';
 import { useOnScreen } from '../../utils/hooks/useOnScreen';
 import shophopper_app_screenshot from '../../public/assets/shophopper_app_screenshot.png';
+import { useWindowSize } from '../../utils';
 
 export const ProjectCard = (props) => {
     const { teamSize, dailyUsers, hours, date, role, stack, title, logo, align, image } = props;
@@ -54,15 +55,15 @@ export const ProjectCard = (props) => {
     };
 
     const [setEntered, enteredScreen] = useOnScreen({ rootMargin: '-20%', threshold: 0 });
-
+    const [width] = useWindowSize();
     return (
         <Wrapper ref={setEntered} visible={enteredScreen} align={align}>
             {/* <RadialGradient top={-320} left={align === 'left' ? -90 : null} right={align === 'right' ? -90 : null} /> */}
-            <Column width="45%" mobile_width="100%">
+            <Column width="50%" mobile_width="100%">
                 <CircleLogo>
                     <Image src={logos[logo]} width={75} height={75} placeholder="blur" />
                 </CircleLogo>
-                <Text width="100%" fontSize={25}  mobile_fontSize={20} textAlign={align} mobile_textAlign="center">
+                <Text width="100%" fontSize={25} mobile_fontSize={20} textAlign={align} mobile_textAlign="center">
                     {title}
                 </Text>
                 <Date>{date}</Date>
@@ -70,8 +71,8 @@ export const ProjectCard = (props) => {
                 <Text textAlign={align} mobile_textAlign="center">
                     {props.description}
                 </Text>
-                <Row width="100%">
-                    <Column width="75%" mobile_width="100%" marginTop={25} justifyContent="flex-start">
+                <Row width="100%" >
+                    <Column width="70%" mobile_width="100%" marginTop={25} justifyContent="flex-start">
                         <TextRow>
                             <Text textAlign="left" width="50%">
                                 Bens Role
@@ -105,18 +106,19 @@ export const ProjectCard = (props) => {
                             </Text>
                         </TextRow>
                     </Column>
-                    {/* 
-                    <Icons width="25%" mobile_width="100%">
-                        <Text textAlign={align} width={'70%'} fontSize={20} fontWeight="bold">
-                            Stack
-                        </Text>
+                    <Icons>
+                        {width > 768 && (
+                            <Text textAlign={align} width={'70%'} fontSize={20} fontWeight="bold">
+                                Stack
+                            </Text>
+                        )}
                         {stack.map((logo) => (
                             <WithHover>
                                 <StackLabel>{logo}</StackLabel>
                                 {logos[logo]({ size: 30 })}
                             </WithHover>
                         ))}
-                    </Icons> */}
+                    </Icons>
                 </Row>
             </Column>
             <Column width="50%" mobile_width="100%" alignContent="flex-end" mobile_alignContent="center">
@@ -150,6 +152,7 @@ const Wrapper = styled.div`
         flex-direction: column;
         width: 100%;
         gap: 40px;
+        margin-top: 30px;
     }
 `;
 
@@ -216,6 +219,9 @@ const StackLabel = styled.div`
     transition: all 0.4s ease;
     text-align: center;
     display: flex;
+    @media (max-width: 768px) {
+        padding: 2px;
+    }
 `;
 
 const WithHover = styled.div`
@@ -239,6 +245,7 @@ const Icons = styled.div`
     @media (max-width: 768px) {
         flex-direction: row;
         width: 100%;
+        gap: 3px;
     }
 `;
 const LinkWrapper = styled.div`

@@ -7,10 +7,14 @@ export const formatChartData = (data, year) => {
 
     let total = 0;
 
+    let tasks = {};
+
     const d = years[selectedYear].reduce((acc, n) => {
         const month = new Date(n.date).getMonth() + 1;
 
         total += +n.duration / 60 || 0;
+
+        tasks = { ...tasks, [n.task]: tasks?.[n.task] + +n.duration / 60 || +n.duration / 60 };
 
         return {
             ...acc,
@@ -22,5 +26,5 @@ export const formatChartData = (data, year) => {
         };
     }, {});
 
-    return { data: Object.values(d), total };
+    return { data: Object.values(d), total, tasks };
 };

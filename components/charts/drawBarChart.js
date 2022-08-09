@@ -1,13 +1,14 @@
 import * as d3 from 'd3';
 import { attachTooltip } from './attachTooltip';
 import { asCssId } from '../../utils';
+import { chartColors } from '../../styles/chartColors';
 
 export function drawBarChart(data, height, width, chartId) {
     const sideMargin = width > 500 ? 150 : 5;
     const margin = { top: 20, right: sideMargin, bottom: 50, left: sideMargin };
     const graphHeight = height - margin.top - margin.bottom;
     const graphWidth = width - margin.left - margin.right;
-    // console.log('/drawBarChart.js - dada: ', data);
+
     const chartName = 'barChart';
     function update() {
         d3.select(`#${chartId}`).selectAll('*').remove();
@@ -30,56 +31,9 @@ export function drawBarChart(data, height, width, chartId) {
             .paddingInner(0.1)
             .paddingOuter(0.1);
 
-        const firstExample = Object.keys(data[0]);
-
         const stackedKeys = [];
 
         data.map((d) => Object.keys(d).forEach((key) => !stackedKeys.includes(key) && stackedKeys.push(key)));
-
-        const colors = [
-            '#B0CFE3',
-            '#FEDE76',
-            '#4BB9D0',
-            '#81CCAF',
-            '#78b7bb',
-            '#D4D4D4',
-            '#b8d496',
-            '#a4d7e1',
-            '#F7CDAB',
-            '#6f9998',
-            '#D8BABB',
-            '#f1e9dd',
-            '#e4f6b0',
-            '#cadde2',
-            '#c8bcbc',
-            '#ac92a6',
-            '#ff9a5b',
-            '#d4a0a7',
-            '#bbd8cf',
-            '#e86f68',
-            '#66cdaa',
-            '#e2d9b3',
-            '#72929B',
-            '#f5aaaa',
-            '#cadde2',
-            '#9fb1b9',
-            '#ffc383',
-            '#81d2cb',
-            '#D4D4D4',
-            '#96ceb4',
-            '#ffdc73',
-            '#e1e2d3',
-            '#ffe0c0',
-            '#a1cfce',
-            '#c6d5ad',
-            '#008080',
-            '#f08080',
-            '#576675',
-            '#ffe4e1',
-            '#fcbf93',
-            '#e5b5d4',
-            '#88a99d'
-        ];
 
         const stack = d3.stack().keys(stackedKeys).offset(d3.stackOffsetDiverging);
 
@@ -90,7 +44,7 @@ export function drawBarChart(data, height, width, chartId) {
         const rects = stacks
             .enter()
             .append('g')
-            .attr('fill', (d, i) => colors[i])
+            .attr('fill', (d, i) => chartColors[d.key])
 
             .attr('id', (d, i) => asCssId(d.key))
             .selectAll('rect')
@@ -118,7 +72,7 @@ export function drawBarChart(data, height, width, chartId) {
             })
             .attr('y', (d, i, a) => yScale(d[1]));
 
-        const axis = graph
+        graph
             .append('g')
             .attr('class', 'axis')
             .call(d3.axisBottom(xScale))

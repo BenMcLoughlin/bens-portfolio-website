@@ -6,19 +6,20 @@ import { useWindowSize } from '../../utils/hooks/useWindowSize';
 import { Row, Text } from '../html';
 import { theme } from '../../styles/theme';
 
-export const SectionHeader = () => {
+export const SectionHeader = (props) => {
+    const { number, text, title } = props;
     const ScrollLink = Scroll.Link;
     const [width, height] = useWindowSize();
 
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <Wrapper menuOpen={menuOpen}>
+        <Wrapper menuOpen={menuOpen} {...props}>
             <TopBar>
                 <Square />
                 <Number>
                     <Text mobile_width="100%" fontWeight={200}>
-                        01
+                        {number}
                     </Text>
                     <Text mobile_width="100%" fontWeight={600} color={'#C4C4C4'}>
                         /05
@@ -28,15 +29,15 @@ export const SectionHeader = () => {
             <Row
                 padding={0}
                 justifyContent="flex-start"
+                mobile_justifyContent="space-around"
                 alignItems="center"
                 width="100%"
                 mobile_flexDirection="column-reverse">
-                <Text width="20%" mobile_width="100%">
-                    Since 2018 Ben has been tracking his hours coding to one day see if the maxim holds true that 10,000
-                    leads to mastery.{' '}
+                <Text width="20%" mobile_width="100%" textAlign="left">
+                    {text}
                 </Text>
                 <Hr />
-                <Title>On a Journey to Mastery</Title>
+                <Title>{title}</Title>
                 <Stats />
             </Row>
         </Wrapper>
@@ -47,13 +48,19 @@ export const SectionHeader = () => {
 
 const Wrapper = styled.div`
     height: 300px;
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 30px;
+    width: 100%;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
+    padding-bottom: 15px;
+
     position: relative;
     border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
+    @media (max-width: 768px) {
+        width: 90%;
+        height: 220px;
+        justify-content: center;
+    }
 `;
 const TopBar = styled.div`
     width: 100%;
@@ -74,9 +81,9 @@ const Hr = styled.div`
     margin-top: -50px;
     border-right: 1px solid ${(p) => p.theme.color.border.medium};
     @media (max-width: 768px) {
-        margin-left: 0px;
-        height: 1px;
-        width: 300px;
+        height: 30px;
+        width: 100%;
+        border-right: none;
         border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
     }
 `;
@@ -93,6 +100,7 @@ const Title = styled.div`
     width: 40%;
     color: ${(p) => p.theme.color.text.primary};
     @media (max-width: 768px) {
+        font-size: 30px;
         width: 100%;
     }
 `;
@@ -106,5 +114,4 @@ const Stats = styled.div`
     font-weight: 900;
     width: 40%;
     color: ${(p) => p.theme.color.text.primary};
-    background: yellow;
 `;
