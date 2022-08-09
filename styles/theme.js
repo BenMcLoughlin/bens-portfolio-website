@@ -3,7 +3,7 @@ export const theme = {
         brand: {
             primary: '#385761',
             secondary: '#E18D7A',
-            tertiary: '#65A4B8'
+            tertiary: '#85B5BA'
         },
         grey: {
             lightest: '#F2f2f2',
@@ -12,6 +12,10 @@ export const theme = {
         },
         border: {
             medium: '#A2B5C6'
+        },
+        text: {
+            primary: '#455A64',
+            secondary: '#E18D7A'
         },
         background: {
             primary: '#FFFFFF',

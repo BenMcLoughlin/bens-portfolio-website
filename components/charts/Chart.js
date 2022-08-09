@@ -49,6 +49,7 @@ const Wrapper = styled.div`
     gap: 10px;
     flex-direction: column;
     align-items: flex-start;
+    background: yellow;
 `;
 
 const Canvas = styled.div`

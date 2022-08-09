@@ -4,11 +4,13 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { Column, Row, Section, Text, Header, Footer, Chart, ProjectCard, Spinner, Button } from '../components';
 import { FormText, TextArea } from '../components/inputs';
+import { SectionHeader } from '../components/layout';
 
 import shophopper_app_screenshot from '../public/assets/shophopper_app_screenshot.png';
 import shophopper_website_screenshot from '../public/assets/shophopper_website_screenshot.png';
 import shophopper_db_screenshot from '../public/assets/shophopper_db_screenshot.png';
 import savvy_plan_screenshot from '../public/assets/savvy_plan_screenshot.png';
+import arrows from '../public/assets/arrows.png';
 
 export default function Home() {
     const [name, setName] = useState('');
@@ -47,18 +49,18 @@ export default function Home() {
             {/* <RadialGradient top={30} right={-20} />
             <RadialGradient top={120} right={20} />
             <RadialGradient top={120} left={-20} /> */}
-            <HeroSection>
-                <Column width="50%" mobile_width={'90%'} height="90%" alignItems="flex-start" padding={20}>
-                    <h1>Ben McLoughlin</h1>
-                    <Text fontStyle="italic" fontWeight="100" fontSize={20} mobile_fontSize={16} mobile_width={'100%'}>
-                        Full Stack Web and Mobile Developer
+            <Section alignContent="flex-start" height={500} width="80%" mobile_width="100%" paddingBottom={20}>
+                <HeroContent>
+                    <Title color="primary">Trust is earned through actions.</Title>
+                    <Title color="secondary">Let Ben earn yours.</Title>
+                    <Text fontSize={20} mobile_fontSize={16} width="70%" mobile_width={'100%'}>
+                        Ben Full Stack Developer Web and mobile app developer specializeing in React/Node.js.
                     </Text>
-                    <Text fontSize={16} textAlign="left" width={'100%'} mobile_width={'100%'}>
-                        Ben&apos;s on a mission to track 10,000 hours of focused coding time. Check out the graph below
-                        to see how he&apos;s been spending his time.
-                    </Text>
-                </Column>
-                <Column alignItems="center" width="50%" mobile_width={'80%'} height="100%" padding={20}>
+                </HeroContent>
+                <BackgroundImageWrapper>
+                    <Image src={arrows} width={300} height={300} placeholder="blur" />
+                </BackgroundImageWrapper>
+                {/* <Column alignItems="center" width="50%" mobile_width={'80%'} height="100%" padding={20}>
                     <Text fontSize={90} width="100%" textAlign="left" mobile_width="90%" mobile_fontSize={60}>
                         4.5k
                     </Text>
@@ -66,8 +68,9 @@ export default function Home() {
                     <Text fontSize={90} width="100%" textAlign="right" mobile_fontSize={60}>
                         10k
                     </Text>
-                </Column>
-            </HeroSection>
+                </Column> */}
+            </Section>
+            <SectionHeader />
             <Section height={400} width="100%" flexDirection="column">
                 <Chart />
             </Section>
@@ -171,6 +174,21 @@ const Wrapper = styled.div`
     flex-direction: column;
     position: relative;
     gap: 5px;
+    background-image: linear-gradient(
+        to right bottom,
+        #faf3ef,
+        #fbf3ee,
+        #fbf3ee,
+        #fcf2ed,
+        #fcf2ec,
+        #fcf0e9,
+        #fbefe7,
+        #fbede4,
+        #fae9de,
+        #f8e5d9,
+        #f7e0d3,
+        #f6dcce
+    );
 `;
 
 const RadialGradient = styled.div`
@@ -196,39 +214,28 @@ const Hr = styled.div`
     width: 100%;
     background: ${(p) => p.theme.color.brand.primary};
 `;
-
-const RotatedLine = styled.div`
-    height: 1px;
-    width: 100%;
-    transform: rotate(135deg);
-    background: ${(p) => p.theme.color.brand.primary};
-    @media (max-width: 768px) {
-        flex-direction: column;
-        width: 70%;
-    }
-`;
-
-const HeroSection = styled.div`
-    min-height: 400px;
-    width: 80%;
-    display: flex;
-    padding-top: 100px;
-    margin: 0 auto;
-    justify-content: space-around;
-    @media (max-width: 768px) {
-        padding-top: 20px;
-        flex-direction: column;
-        width: 100%;
-    }
-`;
-
-const SectionHeader = styled.div`
-    color: ${(p) => p.theme.color.grey.dark};
+const Title = styled.div`
     font-size: 50px;
+    font-weight: 900;
+    color: ${(p) => p.theme.color.text[p.color]};
+`;
 
-    width: 100vw;
-    padding: 20px;
-    margin-bottom: 30px;
+const HeroContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+    text-align: left;
+    margin-left: -10px;
+    z-index: 5;
+    position: relative;
+    gap: 5px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+
+        margin-left: 0;
+    }
 `;
 
 const Form = styled.form`
@@ -243,5 +250,13 @@ const Form = styled.form`
     @media (max-width: 768px) {
         width: 100%;
         padding: 5px;
+    }
+`;
+const BackgroundImageWrapper = styled.div`
+    position: absolute;
+    right: 40px;
+    bottom: 0px;
+    @media (max-width: 1000px) {
+        opacity: 0.2;
     }
 `;
