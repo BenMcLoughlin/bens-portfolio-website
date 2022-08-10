@@ -166,7 +166,7 @@ export default function Home() {
                     <Row>
                         <CommunityCard
                             imageSrc="/assets/logos/edabit_logo.png"
-                            text="Ben has score is in the top 10% on the coding challenge website Edabit. "
+                            text="Ben&apos;s score is in the top 10% on the coding challenge website Edabit. "
                             link="https://edabit.com/user/SYEuojZtP6yLXryHvn"
                             title={'Edabit'}
                         />
