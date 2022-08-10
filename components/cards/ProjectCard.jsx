@@ -133,7 +133,7 @@ export const ProjectCard = (props) => {
                     <Stats />
                     <Icons>
                         {stack.map((logo) => (
-                            <WithHover>
+                            <WithHover key={logo}>
                                 <StackLabel>{logo}</StackLabel>
                                 {logos[logo]({ size: 30, color: contrastColor })}
                             </WithHover>
