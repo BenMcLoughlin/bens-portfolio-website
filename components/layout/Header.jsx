@@ -47,22 +47,22 @@ export const Header = () => {
                     <Right>
                         <ScrollLink
                             activeClass="active"
-                            to="projects"
-                            spy={true}
-                            smooth={true}
-                            offset={-50}
-                            duration={500}>
-                            <ClickText>Projects</ClickText>
-                        </ScrollLink>
-                        <HR />
-                        <ScrollLink
-                            activeClass="active"
                             to="about"
                             spy={true}
                             smooth={true}
                             offset={-50}
                             duration={500}>
                             <ClickText>About</ClickText>
+                        </ScrollLink>
+                        <HR />
+                        <ScrollLink
+                            activeClass="active"
+                            to="projects"
+                            spy={true}
+                            smooth={true}
+                            offset={-50}
+                            duration={500}>
+                            <ClickText>Projects</ClickText>
                         </ScrollLink>
                         <HR />
                         <ScrollLink
@@ -74,15 +74,21 @@ export const Header = () => {
                             duration={500}>
                             <ClickText>Contact</ClickText>
                         </ScrollLink>
+                        <HR />
+                        <Link href="https://github.com/BenMcLoughlin/bens-portfolio-website">
+                            <a target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                                <ClickText>View This Repo</ClickText>
+                            </a>
+                        </Link>
                     </Right>
                     <Social>
-                        <Link href="https://github.com/BenMcLoughlin" >
-                            <a target="_blank" rel="noopener noreferrer">
+                        <Link href="https://github.com/BenMcLoughlin">
+                            <a target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                                 <GithubIcon />
                             </a>
                         </Link>
-                        <Link href="https://github.com/BenMcLoughlin" >
-                            <a target="_blank" rel="noopener noreferrer">
+                        <Link href="https://github.com/BenMcLoughlin">
+                            <a target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                                 <LinkedinIcon />
                             </a>
                         </Link>
@@ -119,7 +125,7 @@ const Wrapper = styled.div`
     border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
     ${(p) => p.menuOpen && menuOpen};
     transition: all 0.3s ease;
-    background: radial-gradient(circle at right, #e7eced, #fcfcfc);
+    background: white;
 `;
 const Left = styled.div`
     width: 20%;
@@ -135,6 +141,7 @@ const Left = styled.div`
 const ClickText = styled.div`
     font-weight: bold;
     cursor: pointer;
+    color: ${(p) => p.theme.color.brand.primary};
 `;
 
 const HR = styled.div`

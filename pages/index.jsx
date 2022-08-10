@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { Column, Row, Section, Text, Chart, ProjectCardV2, CommunityCard, Carousel, Button } from '../components';
+import { Column, Row, Section, Text, Chart, ProjectCard, CommunityCard, Carousel, Button } from '../components';
 import { FormText, TextArea } from '../components/inputs';
 import { Header, Footer, Spinner, SectionHeader } from '../components/layout';
 import ben_profile_photo from '../public/assets/ben_profile_photo.png';
@@ -52,10 +52,10 @@ export default function Home() {
             <Content>
                 <Section alignContent="flex-start" height={500} width="80%" mobile_width="100%" paddingBottom={20}>
                     <HeroContent>
-                        <Title color="primary">Hard-earned Trust is priceless.</Title>
+                        <Title color="primary">Trust is priceless.</Title>
                         <Title color="secondary">Let Ben earn yours.</Title>
                         <Text fontSize={20} mobile_fontSize={16} width="70%" mobile_width={'100%'}>
-                            Ben Full Stack Developer Web and mobile app developer specializeing in React/Node.js.
+                            Full-stack Developer Web and mobile app developer specializeing in React/Node.js.
                         </Text>
                     </HeroContent>
                     <BackgroundImageWrapper>
@@ -89,25 +89,27 @@ export default function Home() {
                             mobile_textAlign={'center'}
                             mobile_width={'90%'}>
                             From Kelowna B.C, Ben is a 34-year-old husband and a father. He served in Afghanistan 2009
-                            and after releasing became a Forest Firefighter. Next, he studied business for his undergrad
-                            and computer science in his MBA. Since 2018, he&apos;s been a software developer honing his
-                            craft so he can become one of the best Full-Stack Developers in Canada.
+                            and after releasing became a Forest Firefighter. He studied business for his undergrad and
+                            computer science in his MBA. He&apos;s now honing his craft so he can become one of the best
+                            Full-Stack Developers in Canada.
                         </Text>
                     </Row>
                 </Section>
                 <Section width="100%" flexDirection="column" background="#385761">
                     <SectionHeader
-                        number={'01'}
+                        number={'02'}
                         text="Since 2018 Ben has been tracking his hours coding to one day see if the maxim holds true that 10,000
                     leads to mastery."
                         title="Journey to Mastery"
                         sectionTheme="dark"
+                        stat1="4.5k"
+                        stat2="10k"
                     />
                     <Chart />
                 </Section>
                 <Section width="100%" flexDirection="column" gap={0}>
-                    <SectionHeader name="projects" number={'02'} text="" title="Recent Projects" />
-                    <ProjectCardV2
+                    <SectionHeader name="projects" number={'03'} text="" title="Recent Projects" />
+                    <ProjectCard
                         title="ShopHopper Mobile App"
                         description=" This app enables users to shop for local fashion apparel in one place. We gather the inventories of
                     local boutique stores and copy the data into our database. Ben built the app using React Native and Expo."
@@ -120,7 +122,7 @@ export default function Home() {
                         align="left"
                         image={shophopper_app_screenshot}
                     />
-                    <ProjectCardV2
+                    <ProjectCard
                         title="ShopHopper Website"
                         description=" This website serves as the landing page for ShopHopper with the goal of getting them to
                     download the mobile app."
@@ -134,7 +136,7 @@ export default function Home() {
                         projectTheme="dark"
                         image={shophopper_website_screenshot}
                     />
-                    <ProjectCardV2
+                    <ProjectCard
                         title="ShopHopper Database"
                         description="Ben helped write scripts that gather the inventories of local boutique stores and copy the data into our database."
                         teamSize="4"
@@ -146,7 +148,7 @@ export default function Home() {
                         image={shophopper_db_screenshot}
                     />
 
-                    <ProjectCardV2
+                    <ProjectCard
                         title="Financial Planning Software"
                         description="Ben built a financial planning platform that uses javascript to provide real time web brower responses to changes in a financial plan. "
                         teamSize="4"
@@ -160,34 +162,31 @@ export default function Home() {
                     />
                 </Section>
                 <Section width="100%" flexDirection="column" background="#385761">
-                    <SectionHeader
-                        number={'01'}
-                        text="Since 2018 Ben has been tracking his hours coding to one day see if the maxim holds true that 10,000
-                    leads to mastery."
-                        title="Community Engagement"
-                        sectionTheme="dark"
-                    />
+                    <SectionHeader number={'04'} text="" title="Community Engagement" sectionTheme="dark" />
                     <Row>
                         <CommunityCard
                             imageSrc="/assets/logos/edabit_logo.png"
-                            text="Ben's score is in the top 10% on the coding challemge website Edabit. "
+                            text="Ben's score is in the top 10% on the coding challenge website Edabit. "
                             link="https://edabit.com/user/SYEuojZtP6yLXryHvn"
+                            title={'Edabit'}
                         />
                         <CommunityCard
                             imageSrc="/assets/logos/dev_icon.png"
                             text="Check out Ben's blog posts on the Dev.to"
                             link="https://dev.to/benmcloughlin"
+                            title={'Dev.to'}
                         />
 
                         <CommunityCard
                             imageSrc="/assets/logos/stack_overflow_icon.png"
                             text="Check out Ben's Stack Overflow profile."
                             link="https://stackoverflow.com/users/12243545/benmcl"
+                            title={'Stack Overflow'}
                         />
                     </Row>
                 </Section>
                 <Section width="90%" padding={40} flexDirection="column">
-                    <SectionHeader name="contact" id="contact" number={'02'} text="" title="Get In Touch" />
+                    <SectionHeader name="contact" id="contact" number={'05'} text="" title="Get In Touch" />
                     <Form>
                         {isLoading ? (
                             <Spinner />

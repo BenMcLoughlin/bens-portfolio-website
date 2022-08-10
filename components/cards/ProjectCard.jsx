@@ -26,7 +26,7 @@ import shophopper from '../../public/assets/shop_hopper_circle_logo.png';
 import shopify from '../../public/assets/shopify_icon.png';
 import { theme } from '../../styles/theme';
 
-export const ProjectCardV2 = (props) => {
+export const ProjectCard = (props) => {
     const ScrollLink = Scroll.Link;
     const [width, height] = useWindowSize();
 
@@ -61,7 +61,12 @@ export const ProjectCardV2 = (props) => {
     const contrastColor = projectTheme === 'dark' ? theme.color.grey.lightest : theme.color.brand.primary;
 
     return (
-        <Wrapper menuOpen={menuOpen} contrastColor={contrastColor} projectTheme={projectTheme}>
+        <Wrapper
+            menuOpen={menuOpen}
+            contrastColor={contrastColor}
+            projectTheme={projectTheme}
+            visible={enteredScreen}
+            ref={setEntered}>
             <TopBar contrastColor={contrastColor}>
                 <Square contrastColor={contrastColor} />
 
@@ -81,43 +86,49 @@ export const ProjectCardV2 = (props) => {
                     </Text>
                 )}
             </TopBar>
-            <CustomRow align={align} visible={enteredScreen} ref={setEntered}>
-                <Text width="20%" mobile_width="100%" textAlign={align} height="100%" color={contrastColor}>
+            <CustomRow align={align}>
+                <Text
+                    width="20%"
+                    mobile_width="100%"
+                    textAlign={align}
+                    fontWeight={200}
+                    height="100%"
+                    color={contrastColor}>
                     {props.description}
                 </Text>
                 <Hr contrastColor={contrastColor} />
                 <Column width="40%" mobile_width="100%">
                     <TextRow contrastColor={contrastColor}>
-                        <Text textAlign="left" width="50%" color={contrastColor}>
+                        <CustomText textAlign="left" color={contrastColor}>
                             Bens Role
-                        </Text>
-                        <Text textAlign="right" width="50%" color={contrastColor}>
+                        </CustomText>
+                        <CustomText textAlign="left" color={contrastColor}>
                             {role}
-                        </Text>
+                        </CustomText>
                     </TextRow>
                     <TextRow contrastColor={contrastColor}>
-                        <Text textAlign="left" width="50%" color={contrastColor}>
+                        <CustomText textAlign="left" color={contrastColor}>
                             Team Size
-                        </Text>
-                        <Text textAlign="right" width="50%" color={contrastColor}>
+                        </CustomText>
+                        <CustomText textAlign="right" color={contrastColor}>
                             {teamSize}
-                        </Text>
+                        </CustomText>
                     </TextRow>
                     <TextRow contrastColor={contrastColor}>
-                        <Text textAlign="left" width="50%" color={contrastColor}>
+                        <CustomText textAlign="left" color={contrastColor}>
                             Avg. Daily Users
-                        </Text>
-                        <Text textAlign="right" width="50%" color={contrastColor}>
+                        </CustomText>
+                        <CustomText textAlign="right" color={contrastColor}>
                             {dailyUsers}
-                        </Text>
+                        </CustomText>
                     </TextRow>
                     <TextRow contrastColor={contrastColor}>
-                        <Text textAlign="left" width="50%" color={contrastColor}>
+                        <CustomText textAlign="left" color={contrastColor}>
                             Hours to Build
-                        </Text>
-                        <Text textAlign="right" width="50%" color={contrastColor}>
+                        </CustomText>
+                        <CustomText textAlign="right" color={contrastColor}>
                             {hours}
-                        </Text>
+                        </CustomText>
                     </TextRow>
                     <Stats />
                     <Icons>
@@ -154,10 +165,12 @@ const Wrapper = styled.div`
     padding-bottom: 15px;
     position: relative;
     border-radius: 10px;
-    margin-top: 80px;
+    margin-top: 120px;
     padding: 20px;
-    background: ${(p) => (p.projectTheme === 'dark' ? theme.color.brand.primary : 'none')};
-    box-shadow: ${(p) => (p.projectTheme === 'dark' ? ' 0px 15px 20px 4px rgba(0, 0, 0, 0.17)' : 'none')};   
+    background: ${(p) => (p.projectTheme === 'dark' ? theme.color.brand.primary : theme.color.grey.lightest)};
+    box-shadow: 0px 15px 20px 4px rgba(0, 0, 0, 0.17);
+    transition: all 0.4s ease;
+    opacity: ${(props) => (!props.visible ? 0 : 1)};
     @media (max-width: 768px) {
         width: 90%;
         justify-content: center;
@@ -188,6 +201,13 @@ const Hr = styled.div`
     }
 `;
 
+const CustomText = styled.div`
+    width: 50%;
+    font-weight: 200;
+    color: ${(p) => p.color};
+    text-align: ${(p) => p.textAlign};
+`;
+
 const Square = styled.div`
     height: 40px;
     width: 30px;
@@ -201,10 +221,10 @@ const CustomRow = styled.div`
     justify-content: space-between;
     align-content: flex-start;
     align-items: flex-start;
-    opacity: ${(props) => (!props.visible ? 0 : 1)};
+
     height: 100%;
     width: 100%;
-    transition: all 0.4s ease;
+
     flex-direction: ${(p) => (p.align === 'left' ? 'row' : 'row-reverse')};
     @media (max-width: 768px) {
         justify-content: space-around;

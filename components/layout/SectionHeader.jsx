@@ -3,11 +3,11 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import * as Scroll from 'react-scroll';
 import { useWindowSize } from '../../utils/hooks/useWindowSize';
-import { Row, Text } from '../html';
+import { Row, Text, Column } from '../html';
 import { theme } from '../../styles/theme';
 
 export const SectionHeader = (props) => {
-    const { number, text, title, noBottomBorder, sectionTheme } = props;
+    const { number, text, title, noBottomBorder, stat1, sectionTheme } = props;
     const ScrollLink = Scroll.Link;
     const [width, height] = useWindowSize();
 
@@ -42,6 +42,29 @@ export const SectionHeader = (props) => {
                 <Title contrastColor={contrastColor} color={contrastColor}>
                     {title}
                 </Title>
+                {width > 768 && stat1 && (
+                    <Column
+                        alignItems="center"
+                        width="30%"
+                        mobile_width={'75%'}
+                        justifyContent="space-around"
+                        height="100%"
+                        padding={20}>
+                        <Text
+                            fontSize={50}
+                            width="100%"
+                            textAlign="left"
+                            color="white"
+                            mobile_width="90%"
+                            mobile_fontSize={60}>
+                            4.5k
+                        </Text>
+                        <RotatedLine contrastColor={contrastColor} />
+                        <Text fontSize={50} width="100%" textAlign="right" color={contrastColor} mobile_fontSize={60}>
+                            10k
+                        </Text>
+                    </Column>
+                )}
             </Row>
         </Wrapper>
     );
@@ -111,4 +134,15 @@ const Title = styled.div`
 const Number = styled.div`
     width: 80px;
     display: flex;
+`;
+
+const RotatedLine = styled.div`
+    height: 1px;
+    width: 100%;
+    transform: rotate(135deg);
+    background: ${(p) => p.contrastColor};
+    @media (max-width: 768px) {
+        flex-direction: column;
+        width: 70%;
+    }
 `;

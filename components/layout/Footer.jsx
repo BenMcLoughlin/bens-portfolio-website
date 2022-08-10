@@ -12,15 +12,9 @@ export const Footer = () => {
     return (
         <Wrapper>
             <Column>
-                <Link passHref href="/">
-                    <Logo>
-                        <Image src={logo} alt="logo" width={40} height={40} layout="fixed" />
-                    </Logo>
-                </Link>
                 <Text>© 2021 — 2022</Text>
                 <Text>benmcl@shaw.ca</Text>
             </Column>
-
             <Social>
                 {/* <TwitterIcon />
                 <LinkedInIcon />
@@ -56,7 +50,7 @@ export const Footer = () => {
 const Wrapper = styled.div`
     min-height: 380px;
     display: flex;
-    background: ${(p) => p.theme.color.grey.dark};
+    background: ${(p) => p.theme.color.brand.primary};
     color: ${(p) => p.theme.color.grey.lightest};
     justify-content: space-around;
     padding: 80px;

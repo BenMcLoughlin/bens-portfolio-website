@@ -1,2 +1,2 @@
-export { ProjectCardV2 } from './ProjectCardV2';
+export { ProjectCard } from './ProjectCard';
 export { CommunityCard } from './CommunityCard';
