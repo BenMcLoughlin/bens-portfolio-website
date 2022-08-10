@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import styled from 'styled-components';
 import * as Scroll from 'react-scroll';
 import { useWindowSize, useOnScreen } from '../../utils/hooks';
@@ -25,7 +24,7 @@ import { Android } from '@styled-icons/fa-brands/Android';
 import { ChartArea } from '@styled-icons/fa-solid/ChartArea';
 import shophopper from '../../public/assets/shop_hopper_circle_logo.png';
 import shopify from '../../public/assets/shopify_icon.png';
-import shophopper_app_screenshot from '../../public/assets/shophopper_app_screenshot.png';
+import { theme } from '../../styles/theme';
 
 export const ProjectCardV2 = (props) => {
     const ScrollLink = Scroll.Link;
@@ -55,60 +54,68 @@ export const ProjectCardV2 = (props) => {
     };
 
     const [menuOpen, setMenuOpen] = useState(false);
-    const { teamSize, dailyUsers, hours, date, role, stack, title, number, align, image } = props;
+    const { teamSize, dailyUsers, hours, date, role, stack, title, projectTheme, align, image } = props;
 
     const [setEntered, enteredScreen] = useOnScreen({ rootMargin: '-20%', threshold: 0 });
 
-    return (
-        <Wrapper menuOpen={menuOpen}>
-            <TopBar>
-                <Square />
+    const contrastColor = projectTheme === 'dark' ? theme.color.grey.lightest : theme.color.brand.primary;
 
-                <Text width="40%" mobile_width="100%" fontSize={20} fontWeight="bold" textAlign={'left'}>
+    return (
+        <Wrapper menuOpen={menuOpen} contrastColor={contrastColor} projectTheme={projectTheme}>
+            <TopBar contrastColor={contrastColor}>
+                <Square contrastColor={contrastColor} />
+
+                <Text
+                    width="40%"
+                    mobile_width="100%"
+                    fontSize={20}
+                    fontWeight="bold"
+                    textAlign={'left'}
+                    color={contrastColor}>
                     {title}
                 </Text>
 
                 {width > 768 && (
-                    <Text mobile_width="100%" fontWeight={600} color={'#C4C4C4'}>
+                    <Text mobile_width="100%" fontWeight={600} color={contrastColor}>
                         {date}
                     </Text>
                 )}
             </TopBar>
             <CustomRow align={align} visible={enteredScreen} ref={setEntered}>
-                <Text width="20%" mobile_width="100%" textAlign={align} height="100%">
+                <Text width="20%" mobile_width="100%" textAlign={align} height="100%" color={contrastColor}>
                     {props.description}
                 </Text>
-                <Hr />
+                <Hr contrastColor={contrastColor} />
                 <Column width="40%" mobile_width="100%">
-                    <TextRow>
-                        <Text textAlign="left" width="50%">
+                    <TextRow contrastColor={contrastColor}>
+                        <Text textAlign="left" width="50%" color={contrastColor}>
                             Bens Role
                         </Text>
-                        <Text textAlign="right" width="50%">
+                        <Text textAlign="right" width="50%" color={contrastColor}>
                             {role}
                         </Text>
                     </TextRow>
-                    <TextRow>
-                        <Text textAlign="left" width="50%">
+                    <TextRow contrastColor={contrastColor}>
+                        <Text textAlign="left" width="50%" color={contrastColor}>
                             Team Size
                         </Text>
-                        <Text textAlign="right" width="50%">
+                        <Text textAlign="right" width="50%" color={contrastColor}>
                             {teamSize}
                         </Text>
                     </TextRow>
-                    <TextRow>
-                        <Text textAlign="left" width="50%">
+                    <TextRow contrastColor={contrastColor}>
+                        <Text textAlign="left" width="50%" color={contrastColor}>
                             Avg. Daily Users
                         </Text>
-                        <Text textAlign="right" width="50%">
+                        <Text textAlign="right" width="50%" color={contrastColor}>
                             {dailyUsers}
                         </Text>
                     </TextRow>
-                    <TextRow>
-                        <Text textAlign="left" width="50%">
+                    <TextRow contrastColor={contrastColor}>
+                        <Text textAlign="left" width="50%" color={contrastColor}>
                             Hours to Build
                         </Text>
-                        <Text textAlign="right" width="50%">
+                        <Text textAlign="right" width="50%" color={contrastColor}>
                             {hours}
                         </Text>
                     </TextRow>
@@ -117,7 +124,7 @@ export const ProjectCardV2 = (props) => {
                         {stack.map((logo) => (
                             <WithHover>
                                 <StackLabel>{logo}</StackLabel>
-                                {logos[logo]({ size: 30 })}
+                                {logos[logo]({ size: 30, color: contrastColor })}
                             </WithHover>
                         ))}
                     </Icons>
@@ -146,7 +153,11 @@ const Wrapper = styled.div`
     flex-direction: column;
     padding-bottom: 15px;
     position: relative;
+    border-radius: 10px;
     margin-top: 80px;
+    padding: 20px;
+    background: ${(p) => (p.projectTheme === 'dark' ? theme.color.brand.primary : 'none')};
+    box-shadow: ${(p) => (p.projectTheme === 'dark' ? ' 0px 15px 20px 4px rgba(0, 0, 0, 0.17)' : 'none')};   
     @media (max-width: 768px) {
         width: 90%;
         justify-content: center;
@@ -159,8 +170,8 @@ const TopBar = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    border-top: 1px solid ${(p) => p.theme.color.border.medium};
-    border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
+    border-top: 1px solid ${(p) => p.contrastColor};
+    border-bottom: 1px solid ${(p) => p.contrastColor};
     background: transparent;
 `;
 
@@ -168,12 +179,12 @@ const Hr = styled.div`
     width: 1px;
     align-items: center;
     height: 300px;
-    border-right: 1px solid ${(p) => p.theme.color.border.medium};
+    border-right: 1px solid ${(p) => p.contrastColor};
     @media (max-width: 768px) {
         height: 30px;
         width: 100%;
         border-right: none;
-        border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
+        border-bottom: 1px solid ${(p) => p.contrastColor};
     }
 `;
 
@@ -181,8 +192,8 @@ const Square = styled.div`
     height: 40px;
     width: 30px;
     background: ${(p) => p.theme.color.brand.secondary};
-    border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
-    border-top: 1px solid ${(p) => p.theme.color.border.medium};
+    border-bottom: 1px solid ${(p) => p.contrastColor};
+    border-top: 1px solid ${(p) => p.contrastColor};
 `;
 const CustomRow = styled.div`
     display: flex;
@@ -197,23 +208,20 @@ const CustomRow = styled.div`
     flex-direction: ${(p) => (p.align === 'left' ? 'row' : 'row-reverse')};
     @media (max-width: 768px) {
         justify-content: space-around;
+        flex-direction: column;
     }
 `;
 
-const Number = styled.div`
-    width: 80px;
-    display: flex;
-`;
 const Stats = styled.div`
     font-size: 50px;
     font-weight: 900;
     width: 40%;
-    color: ${(p) => p.theme.color.text.primary};
+    color: ${(p) => p.contrastColor};
 `;
 const TextRow = styled.div`
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid ${(p) => p.theme.color.grey.medium};
+    border-bottom: 1px solid ${(p) => p.contrastColor};
     width: 100%;
     justify-content: space-between;
     padding: 5px;

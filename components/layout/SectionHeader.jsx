@@ -7,21 +7,23 @@ import { Row, Text } from '../html';
 import { theme } from '../../styles/theme';
 
 export const SectionHeader = (props) => {
-    const { number, text, title } = props;
+    const { number, text, title, noBottomBorder, sectionTheme } = props;
     const ScrollLink = Scroll.Link;
     const [width, height] = useWindowSize();
 
     const [menuOpen, setMenuOpen] = useState(false);
 
+    const contrastColor = sectionTheme === 'dark' ? theme.color.grey.lightest : theme.color.brand.primary;
+
     return (
-        <Wrapper menuOpen={menuOpen} {...props}>
-            <TopBar>
-                <Square />
+        <Wrapper menuOpen={menuOpen} {...props} contrastColor={contrastColor}>
+            <TopBar contrastColor={contrastColor}>
+                <Square contrastColor={contrastColor} />
                 <Number>
-                    <Text mobile_width="100%" fontWeight={200}>
+                    <Text mobile_width="100%" fontWeight={200} color={contrastColor}>
                         {number}
                     </Text>
-                    <Text mobile_width="100%" fontWeight={600} color={'#C4C4C4'}>
+                    <Text mobile_width="100%" fontWeight={600} color={contrastColor}>
                         /05
                     </Text>
                 </Number>
@@ -33,12 +35,13 @@ export const SectionHeader = (props) => {
                 alignItems="center"
                 width="100%"
                 mobile_flexDirection="column-reverse">
-                <Text width="20%" mobile_width="100%" textAlign="left">
+                <Text fontSize={14} width="20%" mobile_width="100%" textAlign="left" color={contrastColor}>
                     {text}
                 </Text>
-                <Hr />
-                <Title>{title}</Title>
-                <Stats />
+                <Hr contrastColor={contrastColor} />
+                <Title contrastColor={contrastColor} color={contrastColor}>
+                    {title}
+                </Title>
             </Row>
         </Wrapper>
     );
@@ -55,7 +58,7 @@ const Wrapper = styled.div`
     padding-bottom: 15px;
 
     position: relative;
-    border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
+    border-bottom: 1px solid ${(p) => (p.noBottomBorder ? 'none' : p.contrastColor)};
     @media (max-width: 768px) {
         width: 90%;
         height: 220px;
@@ -69,8 +72,8 @@ const TopBar = styled.div`
     display: flex;
     justify-content: flex-start;
     gap: 10px;
-    border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
-    border-top: 1px solid ${(p) => p.theme.color.border.medium};
+    border-bottom: 1px solid ${(p) => p.contrastColor};
+    border-top: 1px solid ${(p) => p.contrastColor};
     background: transparent;
 `;
 
@@ -79,26 +82,26 @@ const Hr = styled.div`
     align-items: center;
     height: 300px;
     margin-top: -50px;
-    border-right: 1px solid ${(p) => p.theme.color.border.medium};
+    border-right: 1px solid ${(p) => p.contrastColor};
     @media (max-width: 768px) {
         height: 30px;
         width: 100%;
         border-right: none;
-        border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
+        border-bottom: 1px solid ${(p) => p.contrastColor};
     }
 `;
 const Square = styled.div`
     height: 50px;
     width: 30px;
     background: ${(p) => p.theme.color.brand.tertiary};
-    border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
-    border-top: 1px solid ${(p) => p.theme.color.border.medium};
+    border-bottom: 1px solid ${(p) => p.contrastColor};
+    border-top: 1px solid ${(p) => p.contrastColor};
 `;
 const Title = styled.div`
     font-size: 50px;
     font-weight: 900;
     width: 40%;
-    color: ${(p) => p.theme.color.text.primary};
+    color: ${(p) => p.contrastColor};
     @media (max-width: 768px) {
         font-size: 30px;
         width: 100%;
@@ -108,10 +111,4 @@ const Title = styled.div`
 const Number = styled.div`
     width: 80px;
     display: flex;
-`;
-const Stats = styled.div`
-    font-size: 50px;
-    font-weight: 900;
-    width: 40%;
-    color: ${(p) => p.theme.color.text.primary};
 `;

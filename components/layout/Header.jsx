@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Button } from '../buttons/Button';
-import ben_profile_photo from '../../public/assets/ben_profile_photo.png';
+
 import Image from 'next/image';
 import Head from 'next/head';
 import { Text } from '../';
@@ -45,19 +45,43 @@ export const Header = () => {
                         </Text>
                     </Left>
                     <Right>
-                        <ClickText>Projects</ClickText>
+                        <ScrollLink
+                            activeClass="active"
+                            to="projects"
+                            spy={true}
+                            smooth={true}
+                            offset={-50}
+                            duration={500}>
+                            <ClickText>Projects</ClickText>
+                        </ScrollLink>
                         <HR />
-                        <ClickText>Community</ClickText>
+                        <ScrollLink
+                            activeClass="active"
+                            to="about"
+                            spy={true}
+                            smooth={true}
+                            offset={-50}
+                            duration={500}>
+                            <ClickText>About</ClickText>
+                        </ScrollLink>
                         <HR />
-                        <ClickText>Contact</ClickText>
+                        <ScrollLink
+                            activeClass="active"
+                            to="contact"
+                            spy={true}
+                            smooth={true}
+                            offset={-50}
+                            duration={500}>
+                            <ClickText>Contact</ClickText>
+                        </ScrollLink>
                     </Right>
                     <Social>
-                        <Link href="https://github.com/BenMcLoughlin" onClick={() => _logClick('app_store')}>
+                        <Link href="https://github.com/BenMcLoughlin" >
                             <a target="_blank" rel="noopener noreferrer">
                                 <GithubIcon />
                             </a>
                         </Link>
-                        <Link href="https://github.com/BenMcLoughlin" onClick={() => _logClick('app_store')}>
+                        <Link href="https://github.com/BenMcLoughlin" >
                             <a target="_blank" rel="noopener noreferrer">
                                 <LinkedinIcon />
                             </a>
@@ -76,6 +100,7 @@ const menuOpen = `
 height: 400px;
 flex-direction: column;
 align-items: flex-start;
+
 `;
 
 const Wrapper = styled.div`
@@ -86,7 +111,9 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: space-around;
     height: 65px;
-    z-index: 15;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
     -webkit-box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
     border-bottom: 1px solid ${(p) => p.theme.color.border.medium};
@@ -107,6 +134,7 @@ const Left = styled.div`
 `;
 const ClickText = styled.div`
     font-weight: bold;
+    cursor: pointer;
 `;
 
 const HR = styled.div`

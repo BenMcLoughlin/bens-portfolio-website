@@ -6,12 +6,13 @@ export const theme = {
             tertiary: '#85B5BA'
         },
         grey: {
-            lightest: '#F2f2f2',
+            lightest: '#FCFCFC',
             medium: '#7C858C',
             dark: '#36434E'
         },
         border: {
-            medium: '#A2B5C6'
+            light: '#FFFFFF',
+            medium: '#385761'
         },
         text: {
             primary: '#455A64',

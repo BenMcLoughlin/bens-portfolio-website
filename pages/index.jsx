@@ -2,27 +2,16 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
-import {
-    Column,
-    Row,
-    Section,
-    Text,
-    Header,
-    Footer,
-    Chart,
-    ProjectCard,
-    ProjectCardV2,
-    Spinner,
-    Button
-} from '../components';
+import { Column, Row, Section, Text, Chart, ProjectCardV2, CommunityCard, Carousel, Button } from '../components';
 import { FormText, TextArea } from '../components/inputs';
-import { SectionHeader } from '../components/layout';
-
+import { Header, Footer, Spinner, SectionHeader } from '../components/layout';
+import ben_profile_photo from '../public/assets/ben_profile_photo.png';
 import shophopper_app_screenshot from '../public/assets/shophopper_app_screenshot.png';
 import shophopper_website_screenshot from '../public/assets/shophopper_website_screenshot.png';
 import shophopper_db_screenshot from '../public/assets/shophopper_db_screenshot.png';
 import savvy_plan_screenshot from '../public/assets/savvy_plan_screenshot.png';
 import arrows from '../public/assets/arrows.png';
+import { useWindowSize } from '../utils';
 
 export default function Home() {
     const [name, setName] = useState('');
@@ -34,6 +23,8 @@ export default function Home() {
     const [emailSent, setEmailSent] = useState(false);
 
     const [isLoading, setIsLoading] = useState(false);
+
+    const [size] = useWindowSize();
 
     const sendEmail = async (e) => {
         e.preventDefault();
@@ -71,17 +62,51 @@ export default function Home() {
                         <Image src={arrows} width={300} height={300} placeholder="blur" />
                     </BackgroundImageWrapper>
                 </Section>
-                <Section width="100%" flexDirection="column">
+
+                <Section width="100%" flexDirection="column" gap={0}>
+                    <SectionHeader name="about" number={'01'} text="" title="About Ben" noBottomBorder={true} />
+                    <Row width="100%" alignItems="flex-start">
+                        <Carousel width="60%">
+                            {[...new Array(5)].map((_, i) => (
+                                <ProfileImageWrapper key={i}>
+                                    <Image
+                                        alt="profile"
+                                        src={`/assets/profile_photos/profile_${i}.png`}
+                                        width={size > 768 ? 500 : 250}
+                                        height={size > 768 ? 333 : 166}
+                                        layout="fixed"
+                                    />
+                                </ProfileImageWrapper>
+                            ))}
+                        </Carousel>
+
+                        <Text
+                            fontSize={14}
+                            lineHeight={29}
+                            width="35%"
+                            marginTop={-6}
+                            textAlign="left"
+                            mobile_textAlign={'center'}
+                            mobile_width={'90%'}>
+                            From Kelowna B.C, Ben is a 34-year-old husband and a father. He served in Afghanistan 2009
+                            and after releasing became a Forest Firefighter. Next, he studied business for his undergrad
+                            and computer science in his MBA. Since 2018, he&apos;s been a software developer honing his
+                            craft so he can become one of the best Full-Stack Developers in Canada.
+                        </Text>
+                    </Row>
+                </Section>
+                <Section width="100%" flexDirection="column" background="#385761">
                     <SectionHeader
                         number={'01'}
                         text="Since 2018 Ben has been tracking his hours coding to one day see if the maxim holds true that 10,000
                     leads to mastery."
-                        title="On a Journey to Mastery"
+                        title="Journey to Mastery"
+                        sectionTheme="dark"
                     />
                     <Chart />
                 </Section>
                 <Section width="100%" flexDirection="column" gap={0}>
-                    <SectionHeader number={'02'} text="" title="Recent Projects" />
+                    <SectionHeader name="projects" number={'02'} text="" title="Recent Projects" />
                     <ProjectCardV2
                         title="ShopHopper Mobile App"
                         description=" This app enables users to shop for local fashion apparel in one place. We gather the inventories of
@@ -106,6 +131,7 @@ export default function Home() {
                         date="April 2022"
                         stack={['React', 'NextJs', 'Figma', 'StyledComponents']}
                         align="right"
+                        projectTheme="dark"
                         image={shophopper_website_screenshot}
                     />
                     <ProjectCardV2
@@ -129,8 +155,36 @@ export default function Home() {
                         date="April 2022"
                         stack={['React', 'MongoDB', 'Express', 'D3']}
                         align="right"
+                        projectTheme="dark"
                         image={savvy_plan_screenshot}
                     />
+                </Section>
+                <Section width="100%" flexDirection="column" background="#385761">
+                    <SectionHeader
+                        number={'01'}
+                        text="Since 2018 Ben has been tracking his hours coding to one day see if the maxim holds true that 10,000
+                    leads to mastery."
+                        title="Community Engagement"
+                        sectionTheme="dark"
+                    />
+                    <Row>
+                        <CommunityCard
+                            imageSrc="/assets/logos/edabit_logo.png"
+                            text="Ben's score is in the top 10% on the coding challemge website Edabit. "
+                            link="https://edabit.com/user/SYEuojZtP6yLXryHvn"
+                        />
+                        <CommunityCard
+                            imageSrc="/assets/logos/dev_icon.png"
+                            text="Check out Ben's blog posts on the Dev.to"
+                            link="https://dev.to/benmcloughlin"
+                        />
+
+                        <CommunityCard
+                            imageSrc="/assets/logos/stack_overflow_icon.png"
+                            text="Check out Ben's Stack Overflow profile."
+                            link="https://stackoverflow.com/users/12243545/benmcl"
+                        />
+                    </Row>
                 </Section>
                 <Section width="90%" padding={40} flexDirection="column">
                     <SectionHeader name="contact" id="contact" number={'02'} text="" title="Get In Touch" />
@@ -158,7 +212,7 @@ export default function Home() {
                                     minRows={10}
                                     label="message"
                                 />
-                                <Button title="Shoot" size={18} background={'tertiary'} onClick={(e) => sendEmail(e)} />
+                                <Button title="Shoot" size={18} onClick={(e) => sendEmail(e)} />
                             </Column>
                         )}
                     </Form>
@@ -180,7 +234,7 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
     width: 85%;
-    margin: 40px auto;
+    margin: -15px auto 25px auto;
     max-width: 1200px;
     display: flex;
     flex-direction: column;
@@ -189,17 +243,30 @@ const Content = styled.div`
     -webkit-box-shadow: 0px 15px 20px 4px rgba(0, 0, 0, 0.17);
     box-shadow: 0px 15px 20px 4px rgba(0, 0, 0, 0.17);
     background: radial-gradient(circle at right, #e7eced, #fcfcfc);
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
-const Hr = styled.div`
-    height: 1px;
-    width: 100%;
-    background: ${(p) => p.theme.color.brand.primary};
+const ProfileImageWrapper = styled.div`
+    position: relative;
+    height: 335px;
+    width: 500px;
+    border-bottom: 1px solid ${(p) => p.theme.color.grey.dark};
+    border-left: 1px solid ${(p) => p.theme.color.grey.dark};
+    border-top: 1px solid ${(p) => p.theme.color.grey.dark};
+    @media (max-width: 768px) {
+        height: 166px;
+        width: 250px;
+    }
 `;
 const Title = styled.div`
     font-size: 60px;
     font-weight: 900;
     color: ${(p) => p.theme.color.text[p.color]};
+    @media (max-width: 768px) {
+        font-size: 40px;
+    }
 `;
 
 const HeroContent = styled.div`
@@ -214,9 +281,8 @@ const HeroContent = styled.div`
     gap: 5px;
 
     @media (max-width: 768px) {
-        width: 100%;
-
-        margin-left: 0;
+        width: 90%;
+        margin: 0 auto;
     }
 `;
 

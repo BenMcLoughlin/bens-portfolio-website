@@ -8,6 +8,7 @@ import { Text, Row, Column } from '../html';
 import { RowSingleSelect } from '../buttons';
 import { chartColors } from '../../styles/chartColors';
 
+
 export const Chart = ({ year, title }) => {
     const [total, setTotal] = useState(0);
     //  const [width, setWidth] = useState(0);
@@ -24,6 +25,7 @@ export const Chart = ({ year, title }) => {
 
         setTotal(total.toFixed());
     }, [selectedYear, width]);
+
 
     return (
         <Wrapper>
@@ -68,7 +70,6 @@ const Wrapper = styled.div`
     height: 400px;
     flex-direction: column;
     align-items: flex-start;
-    
 `;
 
 const Canvas = styled.div`
@@ -88,18 +89,18 @@ const YearCell = styled.div`
 
 const Hours = styled.div`
     font-size: 12px;
-    color: ${(p) => p.theme.color.grey.medium};
+    color: ${(p) => p.theme.color.grey.lightest};
 `;
 
 const Year = styled.div`
     font-size: 20px;
-    color: ${(p) => p.theme.color.grey.medium};
+    color: ${(p) => p.theme.color.grey.lightest};
     font-weight: bold;
 `;
 
 const Task = styled.div`
     font-size: 14px;
-    color: ${(p) => p.theme.color.grey.medium};
+    color: ${(p) => p.theme.color.grey.lightest};
 `;
 
 const Cell = styled.div`
@@ -124,11 +125,11 @@ const Circle = styled.div`
 const Hr = styled.div`
     height: 1px;
     width: 100%;
-    background: ${(p) => p.theme.color.border.medium}};
+    background: ${(p) => p.theme.color.border.light}};
 `;
 
 const Vr = styled.div`
     height: 100%;
     width: 1px;
-    background: ${(p) => p.theme.color.border.medium};
+    background: ${(p) => p.theme.color.border.light};
 `;

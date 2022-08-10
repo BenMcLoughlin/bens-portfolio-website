@@ -41,7 +41,7 @@ const Option = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${(p) => (p.selected ? 'white' : 'black')};
+    color: ${(p) => (p.selected ? p.theme.color.brand.primary: p.theme.color.grey.lightest)};
     @media (max-width: 768px) {
         width: 55px;
     }
@@ -60,7 +60,7 @@ const Pill = styled.div`
         height: 30px;
         top: -3px;
         left: 5px;
-        background-color: ${(p) => p.theme.color.brand.primary};
+        background-color: ${(p) => p.theme.color.grey.lightest};
         transform: ${(props) => `translate(${props.positionIndex * 70}px, 0)`};
         transition: all .3s ease;
         border-radius: 5px;

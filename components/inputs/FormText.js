@@ -55,15 +55,14 @@ const Input = styled.input`
     padding: 5px 0 5px 20px;
     font-size: 18px;
     position: relative;
-    background: white;
+    background: transparent;
     border: none;
     color: #2e3339;
-    border-radius: 7px;
-    border: 1px solid ${(props) => props.theme.color.brand.primary};
+    border-bottom: 1px solid ${(props) => props.theme.color.brand.primary};
     z-index: 2;
     &:focus {
         outline: none;
-        border: 1px solid ${(props) => props.theme.color.brand.primary};
+        border-bottom: 1px solid ${(props) => props.theme.color.brand.primary};
         color: ${(props) => props.theme.color.grey.dark};
         font-size: 18px;
     }
