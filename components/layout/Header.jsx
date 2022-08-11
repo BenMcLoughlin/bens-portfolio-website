@@ -85,7 +85,7 @@ export const Header = () => {
                                 <GithubIcon />
                             </a>
                         </Link>
-                        <Link href="https://github.com/BenMcLoughlin">
+                        <Link href="https://www.linkedin.com/in/benmcl/">
                             <a target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                                 <LinkedinIcon />
                             </a>
