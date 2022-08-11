@@ -82,9 +82,9 @@ export const ProjectCard = (props) => {
                 </Text>
 
                 {width > 768 && (
-                    <Text mobile_width="100%" fontWeight={600} color={contrastColor}>
+                    <Date color={contrastColor}>
                         {date}
-                    </Text>
+                    </Date>
                 )}
             </TopBar>
             <CustomRow align={align}>
@@ -239,6 +239,14 @@ const Stats = styled.div`
     font-weight: 900;
     width: 40%;
     color: ${(p) => p.contrastColor};
+`;
+
+const Date = styled.div`
+    font-size: 14px;
+    font-weight: 600;
+    width: 40%;
+    letter-spacing: 4.5px;
+    color: ${(p) => p.color};
 `;
 const TextRow = styled.div`
     display: flex;

@@ -24,7 +24,7 @@ export const SectionHeader = (props) => {
                         {number}
                     </Text>
                     <Text mobile_width="100%" fontWeight={600} color={contrastColor}>
-                        /05
+                        / 05
                     </Text>
                 </Number>
             </TopBar>
@@ -43,24 +43,12 @@ export const SectionHeader = (props) => {
                     {title}
                 </Title>
                 {width > 768 && stat1 && (
-                    <Column
-                        alignItems="center"
-                        width="30%"
-                        mobile_width={'75%'}
-                        justifyContent="space-around"
-                        height="100%"
-                        padding={20}>
-                        <Text
-                            fontSize={50}
-                            width="100%"
-                            textAlign="left"
-                            color="white"
-                            mobile_width="90%"
-                            mobile_fontSize={60}>
+                    <Column alignItems="center" width={140} justifyContent="space-around">
+                        <Text fontSize={40} width="100%" textAlign="left" color="white" mobile_width="90%">
                             4.5k
                         </Text>
                         <RotatedLine contrastColor={contrastColor} />
-                        <Text fontSize={50} width="100%" textAlign="right" color={contrastColor} mobile_fontSize={60}>
+                        <Text fontSize={40} width="100%" textAlign="right" color={contrastColor}>
                             10k
                         </Text>
                     </Column>
@@ -132,11 +120,15 @@ const Title = styled.div`
 `;
 
 const Number = styled.div`
-    width: 80px;
+    width: 50px;
     display: flex;
+    justify-content: space-around;
 `;
 
 const RotatedLine = styled.div`
+    position: absolute;
+    top: 70px;
+    right: 0;
     height: 1px;
     width: 100%;
     transform: rotate(135deg);
