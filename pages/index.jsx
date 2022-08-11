@@ -26,7 +26,7 @@ export default function Home() {
 
     const sendEmail = async (e) => {
         setIsLoading(true);
-        await fetch('/api/email', {
+        const response = await fetch('/api/email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, sendTo: 'benmcl@shaw.ca', message, template: 'contactUs' })
@@ -277,7 +277,7 @@ const HeroContent = styled.div`
     }
 `;
 
-const Form = styled.form`
+const Form = styled.div`
     width: 70%;
     display: flex;
     gap: 20px;

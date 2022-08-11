@@ -30,7 +30,7 @@ export const FormText = ({ handleChange, value = '', label = '', handleErrors, t
             <Label textValue={value} htmlFor={label}>
                 <LabelText>{label}</LabelText>
             </Label>
-            <Error error={error}>{error}</Error>
+            {/* <Error error={error}>{error}</Error> */}
         </Wrapper>
     );
 };

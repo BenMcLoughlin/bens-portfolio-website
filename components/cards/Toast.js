@@ -14,7 +14,7 @@ export const Toast = ({ text = '', type = 'success', className }) => {
             setAppear(false);
         }, 4000);
     }, []);
-    console.log('Hello from Toast');
+   
     return (
         <div className={className}>
             {appear && (
@@ -44,7 +44,8 @@ export const Wrapper = styled.div`
     height: 50px;
     background: white;
     position: fixed;
-    top: 0px;
+    top: 50px;
+    right: 50px;
     border-radius: 3px;
     display: flex;
     align-items: center;
@@ -80,7 +81,7 @@ const IconWrapper = styled.div`
 export const Text = styled.div`
     font-weight: normal;
     padding-right: 22px;
-    font-size: 14px;
+    font-size: 16px;
 `;
 
 const fadeInRight = keyframes`
