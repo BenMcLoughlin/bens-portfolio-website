@@ -3,31 +3,36 @@
         "category": "MONTH PLACEHOLDER",
         "date": "2018-08-19T00:00:00-08:00",
         "quantity": "0",
-        "project": "Front End Developer training"
+        "project": "Front End Developer training",
+        "task": "React Native"
     },
     {
         "category": "MONTH PLACEHOLDER",
         "date": "2018-09-19T00:00:00-08:00",
         "quantity": "0",
-        "project": "Front End Developer training"
+        "project": "Front End Developer training",
+        "task": "React Native"
     },
     {
         "category": "MONTH PLACEHOLDER",
         "date": "2018-10-19T00:00:00-08:00",
         "quantity": "0",
-        "project": "Front End Developer training"
+        "project": "Front End Developer training",
+        "task": "React Native"
     },
     {
         "category": "MONTH PLACEHOLDER",
         "date": "2018-11-19T00:00:00-08:00",
         "quantity": "0",
-        "project": "Front End Developer training"
+        "project": "Front End Developer training",
+        "task": "React Native"
     },
     {
         "category": "MONTH PLACEHOLDER",
         "date": "2018-12-19T00:00:00-08:00",
         "quantity": "0",
-        "project": "Front End Developer training"
+        "project": "Front End Developer training",
+        "task": "React Native"
     },
     {
         "billing": "UNBILLED",
@@ -187,7 +192,7 @@
         "rounding_minutes": 1,
         "subtask": "",
         "sum": "0",
-        "task": "Front end",
+        "task": "React Native",
         "type": "timed",
         "user": ""
     },
@@ -205,7 +210,7 @@
         "rounding_minutes": 1,
         "subtask": "",
         "sum": "0",
-        "task": "Node Js. And Databases",
+        "task": "React Native",
         "type": "timed",
         "user": ""
     },
@@ -295,7 +300,7 @@
         "rounding_minutes": 1,
         "subtask": "",
         "sum": "0",
-        "task": "Node Js. And Databases",
+        "task": "React Native",
         "type": "timed",
         "user": ""
     },
@@ -493,7 +498,7 @@
         "rounding_minutes": 1,
         "subtask": "",
         "sum": "0",
-        "task": "Front end",
+        "task": "React Native",
         "type": "timed",
         "user": ""
     },
@@ -547,7 +552,7 @@
         "rounding_minutes": 1,
         "subtask": "",
         "sum": "0",
-        "task": "Front end",
+        "task": "React Native",
         "type": "timed",
         "user": ""
     },
@@ -655,7 +660,7 @@
         "rounding_minutes": 1,
         "subtask": "",
         "sum": "0",
-        "task": "Front end",
+        "task": "React Native",
         "type": "timed",
         "user": ""
     },
@@ -2239,7 +2244,7 @@
         "rounding_minutes": 1,
         "subtask": "React Native ",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -2257,7 +2262,7 @@
         "rounding_minutes": 1,
         "subtask": "React Native ",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -2401,7 +2406,7 @@
         "rounding_minutes": 1,
         "subtask": "React Native ",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -2437,7 +2442,7 @@
         "rounding_minutes": 1,
         "subtask": "React Native ",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -2509,7 +2514,7 @@
         "rounding_minutes": 1,
         "subtask": "React Native ",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -2797,7 +2802,7 @@
         "rounding_minutes": 1,
         "subtask": "React Native ",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -3031,7 +3036,7 @@
         "rounding_minutes": 1,
         "subtask": "React Native ",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -4165,7 +4170,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -4201,7 +4206,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -5407,7 +5412,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -5461,7 +5466,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -5533,7 +5538,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -5623,7 +5628,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -5731,7 +5736,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -5893,7 +5898,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -5965,7 +5970,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -6037,7 +6042,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -6127,7 +6132,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },
@@ -6199,7 +6204,7 @@
         "rounding_minutes": 1,
         "subtask": "Databases",
         "sum": "0",
-        "task": "Learning",
+        "task": "Relational Databases",
         "type": "timed",
         "user": ""
     },

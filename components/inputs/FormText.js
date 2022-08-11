@@ -30,7 +30,7 @@ export const FormText = ({ handleChange, value = '', label = '', handleErrors, t
             <Label textValue={value} htmlFor={label}>
                 <LabelText>{label}</LabelText>
             </Label>
-            <Error error={error}>{error}</Error>
+            {/* <Error error={error}>{error}</Error> */}
         </Wrapper>
     );
 };
@@ -55,15 +55,14 @@ const Input = styled.input`
     padding: 5px 0 5px 20px;
     font-size: 18px;
     position: relative;
-    background: white;
+    background: transparent;
     border: none;
     color: #2e3339;
-    border-radius: 7px;
-    border: 1px solid ${(props) => props.theme.color.brand.tertiary};
+    border-bottom: 1px solid ${(props) => props.theme.color.brand.primary};
     z-index: 2;
     &:focus {
         outline: none;
-        border: 1px solid ${(props) => props.theme.color.brand.tertiary};
+        border-bottom: 1px solid ${(props) => props.theme.color.brand.primary};
         color: ${(props) => props.theme.color.grey.dark};
         font-size: 18px;
     }
@@ -73,14 +72,13 @@ const Input = styled.input`
 //      width: 270px;
 //  }
 const moveLabelUp = `
-    top: 1px;
+    top: -3px;
     font-size: 14px;
     left 27px;
     height: 10px;
     font-weight: bold;
     width: auto;
-    padding: 5px;
-    background: white;
+    padding: 0px;
 `;
 
 const Label = styled.label`
@@ -96,7 +94,7 @@ const Label = styled.label`
     width: auto;
     padding: 5px;
     align-items: center;
-    color:  ${(props) => props.theme.color.brand.tertiary};
+    color:  ${(props) => props.theme.color.brand.primary};
         ${Input}:focus ~ & {
     ${moveLabelUp}
     

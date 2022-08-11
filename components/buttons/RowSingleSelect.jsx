@@ -41,7 +41,10 @@ const Option = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${(p) => (p.selected ? 'white' : 'black')};
+    color: ${(p) => (p.selected ? p.theme.color.brand.primary: p.theme.color.grey.lightest)};
+    @media (max-width: 768px) {
+        width: 55px;
+    }
 `;
 const Options = styled.div`
     display: flex;
@@ -57,11 +60,16 @@ const Pill = styled.div`
         height: 30px;
         top: -3px;
         left: 5px;
-        background-color: #4F9190;
+        background-color: ${(p) => p.theme.color.grey.lightest};
         transform: ${(props) => `translate(${props.positionIndex * 70}px, 0)`};
         transition: all .3s ease;
         border-radius: 5px;
         animation: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) 0s 1 normal forwards running fmdUjs;
+        @media (max-width: 768px) {
+            transform: ${(props) => `translate(${props.positionIndex * 55}px, 0)`};
+            left: 0px;
+            min-width: 55px;
+        }
    
 }
 `;

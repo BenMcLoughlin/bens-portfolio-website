@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { Column, Row, Section, Text, Header, Footer, Chart, ProjectCard, Spinner, Button } from '../components';
+import { Column, Row, Section, Text, Chart, ProjectCard, CommunityCard, Carousel, Button, Toast } from '../components';
 import { FormText, TextArea } from '../components/inputs';
-
+import { Header, Footer, Spinner, SectionHeader } from '../components/layout';
 import shophopper_app_screenshot from '../public/assets/shophopper_app_screenshot.png';
 import shophopper_website_screenshot from '../public/assets/shophopper_website_screenshot.png';
 import shophopper_db_screenshot from '../public/assets/shophopper_db_screenshot.png';
 import savvy_plan_screenshot from '../public/assets/savvy_plan_screenshot.png';
+import arrows from '../public/assets/arrows.png';
+import { useWindowSize } from '../utils';
 
 export default function Home() {
     const [name, setName] = useState('');
@@ -21,142 +22,193 @@ export default function Home() {
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const [size] = useWindowSize();
+
     const sendEmail = async (e) => {
-        e.preventDefault();
-
         setIsLoading(true);
-
-        const res = await fetch('/api/email', {
+        const response = await fetch('/api/email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, sendTo: 'benmcl@shaw.ca', message, template: 'contactUs' })
         });
 
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 300);
-
         setEmailSent(true);
         setName('');
         setEmail('');
+        setIsLoading(false);
     };
 
     return (
         <Wrapper>
             <Header />
-            {/* <RadialGradient top={30} right={-20} />
-            <RadialGradient top={120} right={20} />
-            <RadialGradient top={120} left={-20} /> */}
-            <HeroSection>
-                <Column width="50%" mobile_width={'90%'} height="90%" alignItems="flex-start" padding={20}>
-                    <h1>Ben McLoughlin</h1>
-                    <Text fontStyle="italic" fontWeight="100" fontSize={20} mobile_fontSize={16} mobile_width={'100%'}>
-                        Full Stack Web and Mobile Developer
-                    </Text>
-                    <Text fontSize={16} textAlign="left" width={'100%'} mobile_width={'100%'}>
-                        Ben&apos;s on a mission to track 10,000 hours of focused coding time. Check out the graph below
-                        to see how he&apos;s been spending his time.
-                    </Text>
-                </Column>
-                <Column alignItems="center" width="50%" mobile_width={'80%'} height="100%" padding={20}>
-                    <Text fontSize={90} width="100%" textAlign="left" mobile_width="90%" mobile_fontSize={60}>
-                        4.5k
-                    </Text>
-                    <RotatedLine />
-                    <Text fontSize={90} width="100%" textAlign="right" mobile_fontSize={60}>
-                        10k
-                    </Text>
-                </Column>
-            </HeroSection>
-            <Section height={400} width="100%" flexDirection="column">
-                <Chart />
-            </Section>
-            <Section width="90%" flexDirection="column">
-                <SectionHeader>Latest Projects</SectionHeader>
-                <ProjectCard
-                    title="ShopHopper Mobile App"
-                    description=" This app enables users to shop for local fashion apparel in one place. We gather the inventories of
+            <Content>
+                <Section alignContent="flex-start" height={500} width="80%" mobile_width="90%" paddingBottom={20}>
+                    <HeroContent>
+                        <Title color="primary">Trust is priceless.</Title>
+                        <Title color="secondary">Let Ben earn yours.</Title>
+                        <Text fontSize={20} mobile_fontSize={16} width="70%" mobile_width={'100%'}>
+                            Full-stack Developer Web and mobile app developer specializing in React/Node.js.
+                        </Text>
+                    </HeroContent>
+                    <BackgroundImageWrapper>
+                        <Image src={arrows} width={300} height={300} placeholder="blur" />
+                    </BackgroundImageWrapper>
+                </Section>
+
+                <Section width="100%" flexDirection="column" gap={0}>
+                    <SectionHeader name="about" number={'01'} text="" title="About Ben" noBottomBorder={true} />
+                    <Row width="100%" alignItems="flex-start" mobile_alignItems="center">
+                        <Carousel width="60%">
+                            {[...new Array(5)].map((_, i) => (
+                                <ProfileImageWrapper key={i}>
+                                    <Image
+                                        alt="profile"
+                                        src={`/assets/profile_photos/profile_${i}.png`}
+                                        width={size > 768 ? 500 : 250}
+                                        height={size > 768 ? 333 : 166}
+                                        layout="fixed"
+                                    />
+                                </ProfileImageWrapper>
+                            ))}
+                        </Carousel>
+                        <Text
+                            fontSize={14}
+                            lineHeight={29}
+                            width="35%"
+                            marginTop={-6}
+                            textAlign="left"
+                            mobile_textAlign={'center'}
+                            mobile_width={'90%'}>
+                            From Kelowna B.C, Ben is a 34-year-old husband and a father. He served in Afghanistan 2009
+                            and after releasing became a Forest Firefighter. He studied business for his undergrad and
+                            computer science in his MBA. He&apos;s now honing his craft so he can become one of the best
+                            Full-Stack Developers in Canada.
+                        </Text>
+                    </Row>
+                </Section>
+                <Section width="100%" flexDirection="column" background="#385761">
+                    <SectionHeader
+                        number={'02'}
+                        text="Since 2018 Ben has been tracking his hours coding to one day see if the maxim holds true that 10,000
+                    leads to mastery."
+                        title="Journey to Mastery"
+                        sectionTheme="dark"
+                        stat1="4.5k"
+                        stat2="10k"
+                    />
+                    <Chart />
+                </Section>
+                <Section width="100%" flexDirection="column" gap={0}>
+                    <SectionHeader name="projects" number={'03'} text="" title="Recent Projects" />
+                    <ProjectCard
+                        title="ShopHopper Mobile App"
+                        description=" This app enables users to shop for local fashion apparel in one place. We gather the inventories of
                     local boutique stores and copy the data into our database. Ben built the app using React Native and Expo."
-                    teamSize="3"
-                    dailyUsers="98"
-                    hours="742"
-                    role="Full-stack mobile Developer"
-                    date="Nov 2021 - July2022"
-                    stack={['ReactNative', 'Expo', 'Sentry', 'IOS', 'Android']}
-                    align="left"
-                    image={shophopper_app_screenshot}
-                />
-                <ProjectCard
-                    title="ShopHopper Website"
-                    description=" This website serves as the landing page for ShopHopper with the goal of getting them to
+                        teamSize="3"
+                        dailyUsers="98"
+                        hours="742"
+                        role="Full-stack mobile"
+                        date="Nov 2021 - July2022"
+                        stack={['ReactNative', 'Expo', 'Sentry', 'IOS', 'Android']}
+                        align="left"
+                        image={shophopper_app_screenshot}
+                    />
+                    <ProjectCard
+                        title="ShopHopper Website"
+                        description=" This website serves as the landing page for ShopHopper with the goal of getting them to
                     download the mobile app."
-                    teamSize="4"
-                    role="Front-end Developer"
-                    dailyUsers="44"
-                    hours="67"
-                    date="April 2022"
-                    stack={['React', 'NextJs', 'Figma', 'StyledComponents']}
-                    align="right"
-                    image={shophopper_website_screenshot}
-                />
-                <ProjectCard
-                    title="ShopHopper Database"
-                    description="Ben helped write scripts that gather the inventories of local boutique stores and copy the data into our database."
-                    teamSize="4"
-                    dailyUsers="44"
-                    hours="67"
-                    date="April 2022"
-                    stack={['AWS', 'PostgreSQL', 'Prisma', 'NextJs']}
-                    align="left"
-                    image={shophopper_db_screenshot}
-                />
+                        teamSize="4"
+                        role="Front-end Developer"
+                        dailyUsers="44"
+                        hours="67"
+                        date="April 2022"
+                        stack={['React', 'NextJs', 'Figma', 'StyledComponents']}
+                        align="right"
+                        projectTheme="dark"
+                        image={shophopper_website_screenshot}
+                    />
+                    <ProjectCard
+                        title="ShopHopper Database"
+                        description="Ben helped write scripts that gather the inventories of local boutique stores and copy the data into our database."
+                        teamSize="4"
+                        dailyUsers="44"
+                        hours="67"
+                        date="April 2022"
+                        stack={['AWS', 'PostgreSQL', 'Prisma', 'NextJs']}
+                        align="left"
+                        image={shophopper_db_screenshot}
+                    />
 
-                <ProjectCard
-                    title="Financial Planning Software"
-                    description="Ben built a financial planning platform that uses javascript to provide real time web brower responses to changes in a financial plan. "
-                    teamSize="4"
-                    dailyUsers="44"
-                    hours="67"
-                    date="April 2022"
-                    stack={['React', 'MongoDB', 'Express', 'D3']}
-                    align="right"
-                    image={savvy_plan_screenshot}
-                />
-            </Section>
-            <Section width="90%" padding={40} flexDirection="column">
-                <SectionHeader name="contact" id="contact">
-                    Reach out
-                </SectionHeader>
-                <Form>
-                    {isLoading ? (
-                        <Spinner />
-                    ) : (
-                        <Column width="100%" alignItems="flex-end">
-                            <Row justifyContent="space-between" width="100%">
-                                <FormText
-                                    value={name}
-                                    label={'First Name'}
-                                    handleChange={(e) => setName(e.target.value)}
-                                />
-                                <FormText
-                                    value={email}
-                                    label={'Email'}
-                                    handleChange={(e) => setEmail(e.target.value)}
-                                />
-                            </Row>
-                            <TextArea
-                                className="contact"
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                                minRows={10}
-                                label="message"
-                            />
-                            <Button title="Shoot" size={18} background={'tertiary'} onClick={(e) => sendEmail(e)} />
-                        </Column>
-                    )}
-                </Form>
-            </Section>
+                    <ProjectCard
+                        title="Financial Planning Software"
+                        description="Ben built a financial planning platform that uses javascript to provide real time web brower responses to changes in a financial plan. "
+                        teamSize="4"
+                        dailyUsers="44"
+                        hours="67"
+                        date="April 2022"
+                        stack={['React', 'MongoDB', 'Express', 'D3']}
+                        align="right"
+                        projectTheme="dark"
+                        image={savvy_plan_screenshot}
+                    />
+                </Section>
+                <Section width="100%" flexDirection="column" background="#385761">
+                    <SectionHeader number={'04'} text="" title="Community Engagement" sectionTheme="dark" />
+                    <Row>
+                        <CommunityCard
+                            imageSrc="/assets/logos/edabit_logo.png"
+                            text="Ben's score is in the top 10% on the coding challenge website Edabit. "
+                            link="https://edabit.com/user/SYEuojZtP6yLXryHvn"
+                            title={'Edabit'}
+                        />
+                        <CommunityCard
+                            imageSrc="/assets/logos/dev_icon.png"
+                            text="Keep an eye out for Ben's next blog post on Dev.to"
+                            link="https://dev.to/benmcloughlin"
+                            title={'Dev.to'}
+                        />
 
+                        <CommunityCard
+                            imageSrc="/assets/logos/stack_overflow_icon.png"
+                            text="Check out his Stack Overflow profile."
+                            link="https://stackoverflow.com/users/12243545/benmcl"
+                            title={'Stack Overflow'}
+                        />
+                    </Row>
+                </Section>
+                <Section flexDirection="column">
+                    <SectionHeader name="contact" id="contact" number={'05'} text="" title="Get In Touch" />
+                    <Form>
+                        {isLoading ? (
+                            <Spinner />
+                        ) : (
+                            <Column width="100%" alignItems="flex-end">
+                                <Row justifyContent="space-between" width="100%">
+                                    <FormText
+                                        value={name}
+                                        label={'First Name'}
+                                        handleChange={(e) => setName(e.target.value)}
+                                    />
+                                    <FormText
+                                        value={email}
+                                        label={'Email'}
+                                        handleChange={(e) => setEmail(e.target.value)}
+                                    />
+                                </Row>
+                                <TextArea
+                                    className="contact"
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                    minRows={10}
+                                    label="message"
+                                />
+                                <Button title="Shoot" size={18} onClick={(e) => sendEmail(e)} />
+                            </Column>
+                        )}
+                    </Form>
+                </Section>
+            </Content>
+            {emailSent && <Toast text="Email sent!" />}
             <Footer />
         </Wrapper>
     );
@@ -167,71 +219,65 @@ export default function Home() {
 const Wrapper = styled.div`
     width: 100%;
     height: auto;
+    background: radial-gradient(circle at right, #e7eced, #fcfcfc);
+    position: relative;
+`;
+
+const Content = styled.div`
+    width: 85%;
+    margin: -15px auto 25px auto;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     position: relative;
-    gap: 5px;
-`;
-
-const RadialGradient = styled.div`
-    position: absolute;
-    top: ${(p) => p.top}px;
-    right: ${(p) => p.right}px;
-    left: ${(p) => p.left}px;
-    height: 500px;
-    width: 500px;
-    opacity: 0.4;
-    z-index: -1;
-    background: none;
-    background: radial-gradient(
-        circle,
-        rgba(56, 87, 97, 0.9990589985994398) 0%,
-        rgba(56, 87, 97, 0.3463979341736695) 0%,
-        rgba(255, 255, 255, 1) 65%
-    );
-`;
-
-const Hr = styled.div`
-    height: 1px;
-    width: 100%;
-    background: ${(p) => p.theme.color.brand.primary};
-`;
-
-const RotatedLine = styled.div`
-    height: 1px;
-    width: 100%;
-    transform: rotate(135deg);
-    background: ${(p) => p.theme.color.brand.primary};
+    gap: 25px;
+    -webkit-box-shadow: 0px 15px 20px 4px rgba(0, 0, 0, 0.17);
+    box-shadow: 0px 15px 20px 4px rgba(0, 0, 0, 0.17);
+    background: radial-gradient(circle at right, #e7eced, #fcfcfc);
     @media (max-width: 768px) {
-        flex-direction: column;
-        width: 70%;
-    }
-`;
-
-const HeroSection = styled.div`
-    min-height: 400px;
-    width: 80%;
-    display: flex;
-    padding-top: 100px;
-    margin: 0 auto;
-    justify-content: space-around;
-    @media (max-width: 768px) {
-        padding-top: 20px;
-        flex-direction: column;
         width: 100%;
     }
 `;
 
-const SectionHeader = styled.div`
-    color: ${(p) => p.theme.color.grey.dark};
-    font-size: 50px;
-
-    width: 100vw;
-    padding: 20px;
-    margin-bottom: 30px;
+const ProfileImageWrapper = styled.div`
+    position: relative;
+    height: 335px;
+    width: 500px;
+    border-bottom: 1px solid ${(p) => p.theme.color.grey.dark};
+    border-left: 1px solid ${(p) => p.theme.color.grey.dark};
+    border-top: 1px solid ${(p) => p.theme.color.grey.dark};
+    @media (max-width: 768px) {
+        height: 166px;
+        width: 250px;
+    }
+`;
+const Title = styled.div`
+    font-size: 60px;
+    font-weight: 900;
+    color: ${(p) => p.theme.color.text[p.color]};
+    @media (max-width: 768px) {
+        font-size: 40px;
+    }
 `;
 
-const Form = styled.form`
+const HeroContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+    text-align: left;
+    margin-left: -10px;
+    z-index: 5;
+    position: relative;
+    gap: 5px;
+
+    @media (max-width: 768px) {
+        width: 90%;
+        margin: 0 auto;
+    }
+`;
+
+const Form = styled.div`
     width: 70%;
     display: flex;
     gap: 20px;
@@ -243,5 +289,13 @@ const Form = styled.form`
     @media (max-width: 768px) {
         width: 100%;
         padding: 5px;
+    }
+`;
+const BackgroundImageWrapper = styled.div`
+    position: absolute;
+    right: 40px;
+    bottom: 0px;
+    @media (max-width: 1000px) {
+        opacity: 0.2;
     }
 `;

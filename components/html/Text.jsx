@@ -13,7 +13,7 @@ export const Text = (props) => {
 const Wrapper = styled(StyledWrapper)`
     font-size: 16px;
     line-height: 140%;
-    font-weight: 400;
+    font-weight: ${p => p.fontWeight || 400};
     letter-spacing: 0px;
     color: ${(p) => p.theme.color.brand.primary};
     font-family: 'Lato', sans-serif;

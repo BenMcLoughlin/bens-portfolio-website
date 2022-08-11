@@ -20,12 +20,11 @@ export const attachTooltip = (graph, xScale, yScale, graphHeight, chartId, graph
     let text = '';
     let total = '';
     let d = {};
-    let lineIsHovered = false;
-
 
     d3.selectAll(`.${chartId}Rect`)
         .on('mouseover', (e, hovered, i) => {
             value = hovered[1] - hovered[0];
+            console.log('/attachTooltip.js - hovered: ', hovered);
             task =
                 Object.entries(hovered.data).find(
                     ([k, v]) => typeof v === 'number' && v.toFixed() === value.toFixed()
@@ -42,32 +41,10 @@ export const attachTooltip = (graph, xScale, yScale, graphHeight, chartId, graph
             d = hovered;
             topValue = d[1] > 0 ? d[1] : d[0];
 
-            x = Math.min(xScale(d.data.period), graphWidth * 0.86);
-            y = yScale(Math.max(topValue * 1.4, 70));
+            x = Math.min(xScale(hovered.data.period) + graphWidth * 0.04, graphWidth * 0.86);
+            y = yScale(topValue * 1.2);
 
-            lineIsHovered = false;
-            graph
-                .append('line')
-                .attr('id', `showsOnMouseOver`)
-                .attr('x1', xScale(d.data.period))
-                .attr('x2', xScale(d.data.period))
-                .attr('y1', '30px')
-                .attr('y2', graphHeight)
-                .attr('stroke-width', 2)
-                .attr('stroke', '#72929B')
-                .attr('stroke-dasharray', '5')
-                .attr('stroke-linecap', 'round')
-                .attr('id', 'areaLineRect');
-
-            graph
-                .append('circle')
-                .attr('id', `showsOnMouseOver`)
-                .attr('r', 5)
-                .attr('cx', xScale(d.data.period))
-                .attr('cy', yScale(d[1]))
-                .attr('fill', 'white')
-                .attr('stroke-width', 2)
-                .attr('stroke', '#72929B');
+            addLineAndCircle();
 
             label(text)
                 .attr('id', 'showsOnMouseOver')
@@ -87,22 +64,30 @@ export const attachTooltip = (graph, xScale, yScale, graphHeight, chartId, graph
                     ([k, v]) => typeof v === 'number' && v.toFixed() === value.toFixed()
                 )?.[0] || 'bottom';
 
-            console.log('/attachTooltip.js - lineIsHovered: ', lineIsHovered);
-
-            if (!lineIsHovered) {
-                d3.selectAll('#showsOnMouseOver').remove();
-            }
-
+            d3.selectAll('#showsOnMouseOver').remove();
             d3.selectAll(`#${asCssId(task)}`).attr('opacity', '1');
             d3.selectAll(`line`).remove();
         });
+
+    d3.selectAll(`#showsOnMouseOver`).on('mouseover', (e, hovered, i) => {
+        addLineAndCircle();
+
+        label(text)
+            .attr('id', 'showsOnMouseOver')
+            .attr('transform', `translate(${x * 1.05} ${y})`);
+
+        label(total)
+            .attr('id', 'showsOnMouseOver')
+            .attr('transform', `translate(${xScale(hovered.data.period)} ${0})`);
+
+        d3.selectAll(`#${asCssId(task)}`).attr('opacity', '0.6');
+    });
 
     function label(text) {
         const label = graph.append('g');
 
         label
             .append('rect')
-            .attr('id', `${chartId}Rect`)
             .attr('height', '30px')
             .attr('width', `${3 + text.length * 10}px`)
             .attr('rx', `5px`)
@@ -113,7 +98,6 @@ export const attachTooltip = (graph, xScale, yScale, graphHeight, chartId, graph
 
         label
             .append('text')
-            .attr('id', `${chartId}Rect`)
             .attr('r', 155)
             .attr('height', '15px')
             .attr('width', '3rem')
@@ -125,5 +109,30 @@ export const attachTooltip = (graph, xScale, yScale, graphHeight, chartId, graph
             .attr('y', '20px');
 
         return label;
+    }
+
+    function addLineAndCircle() {
+        graph
+            .append('line')
+            .attr('id', `showsOnMouseOver`)
+            .attr('x1', xScale(d.data.period) + graphWidth * 0.04)
+            .attr('x2', xScale(d.data.period) + graphWidth * 0.04)
+            .attr('y1', '30px')
+            .attr('y2', graphHeight)
+            .attr('stroke-width', 2)
+            .attr('stroke', '#72929B')
+            .attr('stroke-dasharray', '5')
+            .attr('stroke-linecap', 'round')
+            .attr('id', 'areaLineRect');
+
+        graph
+            .append('circle')
+            .attr('id', `showsOnMouseOver`)
+            .attr('r', 5)
+            .attr('cx', xScale(d.data.period) + graphWidth * 0.04)
+            .attr('cy', yScale(d[1]))
+            .attr('fill', 'white')
+            .attr('stroke-width', 2)
+            .attr('stroke', '#72929B');
     }
 };

@@ -12,40 +12,30 @@ export const Footer = () => {
     return (
         <Wrapper>
             <Column>
-                <Link passHref href="/">
-                    <Logo>
-                        <Image src={logo} alt="logo" width={40} height={40} layout="fixed" />
-                    </Logo>
-                </Link>
                 <Text>© 2021 — 2022</Text>
                 <Text>benmcl@shaw.ca</Text>
             </Column>
-
             <Social>
                 {/* <TwitterIcon />
                 <LinkedInIcon />
                 <InstagramIcon />
                 <Hr /> */}
-                <Link
-                    href="https://apps.apple.com/us/app/shophopper/id1604915084"
-                    onClick={() => _logClick('app_store')}>
+                <Link href="https://apps.apple.com/us/app/shophopper/id1604915084">
                     <a target="_blank" rel="noopener noreferrer">
                         <AppleIcon />
                     </a>
                 </Link>
-                <Link
-                    href="https://play.google.com/store/apps/details?id=com.shophopper.app"
-                    onClick={() => _logClick('app_store')}>
+                <Link href="https://play.google.com/store/apps/details?id=com.shophopper.app">
                     <a target="_blank" rel="noopener noreferrer">
                         <GooglePlayIcon />
                     </a>
                 </Link>
-                <Link href="https://github.com/BenMcLoughlin" onClick={() => _logClick('app_store')}>
+                <Link href="https://github.com/BenMcLoughlin">
                     <a target="_blank" rel="noopener noreferrer">
                         <GithubIcon />
                     </a>
                 </Link>
-                <Link href="https://github.com/BenMcLoughlin" onClick={() => _logClick('app_store')}>
+                <Link href="https://github.com/BenMcLoughlin">
                     <a target="_blank" rel="noopener noreferrer">
                         <LinkedinIcon />
                     </a>
@@ -60,17 +50,19 @@ export const Footer = () => {
 const Wrapper = styled.div`
     min-height: 380px;
     display: flex;
-    background: ${(p) => p.theme.color.grey.dark};
+    background: ${(p) => p.theme.color.brand.primary};
     color: ${(p) => p.theme.color.grey.lightest};
     justify-content: space-around;
     padding: 80px;
+
+    @media (max-width: 900px) {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 `;
-// @media (max-width: 900px) {
-//     width: 100%;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 40px;
-// }
+
 const AppleIcon = styled(Apple)`
     height: 34px;
     width: 34px;
@@ -105,12 +97,7 @@ const Column = styled.div`
     gap: 20px;
     align-items: flex-start;
 `;
-// @media (max-width: 900px) {
-//     width: 100%;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 20px;
-// }
+
 const Social = styled.div`
     width: 220px;
     justify-content: center;

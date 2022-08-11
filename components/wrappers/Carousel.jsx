@@ -15,7 +15,7 @@ export function Carousel(props) {
     const [selectedIndex, setCurrentIndex] = useState(0);
 
     const [size] = useWindowSize();
-    console.log('/Carousel.js - size: ', size);
+
     useEffect(() => {
         if (children[selectedIndex]?.props?.hasOwnProperty('onMouseOver')) {
             children[selectedIndex]?.props?.onMouseOver();
@@ -25,7 +25,7 @@ export function Carousel(props) {
     const modules = size > 768 ? [Pagination, Navigation, Autoplay] : [Autoplay];
 
     return (
-        <Wrapper>
+        <Wrapper {...props}>
             <Swiper
                 pagination={true}
                 navigation={true}
@@ -50,7 +50,7 @@ export function Carousel(props) {
 
 const Wrapper = styled.div`
     display: flex;
-    width: 100%;
+    width: ${(p) => p.width || '100%'};
     flex-direction: row;
     align-items: center;
     align-content: center;

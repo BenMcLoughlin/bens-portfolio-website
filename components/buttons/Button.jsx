@@ -3,29 +3,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { Github } from '@styled-icons/bootstrap/Github';
 
-export const Button = ({ title = '', onClick, onSubmit = null, icon, background = 'primary', type, href }) => {
+export const Button = ({
+    title = '',
+    onClick = () => null,
+    onSubmit = null,
+    icon,
+    background = 'primary',
+    type,
+    href
+}) => {
     const isLinkButton = href?.length > 0;
     return (
-        <>
-            {isLinkButton ? (
-                <a href={href} style={{ textDecoration: 'none' }} onClick={onClick}>
-                    <Wrapper type={type} background={background}>
-                        <Title>{title}</Title>
-                    </Wrapper>
-                </a>
-            ) : (
-                <Wrapper
-                    type={type}
-                    background={background}
-                    onClick={(e) => {
-                        null;
-                    }}
-                    onSubmit={onSubmit && onSubmit}>
-                    {icon === 'github' && <GithubIcon />}
-                    <Title>{title}</Title>
-                </Wrapper>
-            )}
-        </>
+        <Wrapper type={type} background={background} onClick={(e) => onClick(e)} onSubmit={onSubmit && onSubmit}>
+            {icon === 'github' && <GithubIcon />}
+            <Title>{title}</Title>
+        </Wrapper>
     );
 };
 
@@ -33,7 +25,7 @@ export const Button = ({ title = '', onClick, onSubmit = null, icon, background 
 
 const Wrapper = styled.button`
     height: 45px;
-    width: 140px;
+    min-width: 140px;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -47,17 +39,15 @@ const Wrapper = styled.button`
     margin-top: 14px;
     padding-left: 14px;
     padding-right: 14px;
+    gap: 10px;
     background: ${(p) => (p.background === 'transparent' ? 'transparent' : p.theme.color.brand[p.background])};
     color: ${(p) => (p.background === 'transparent' ? p.theme.color.grey.dark : 'white')};
     text-decoration: none;
-<<<<<<< HEAD
     underline: none;
     color: white;
     &:active {
         text-decoration: none;
     }
-=======
->>>>>>> 8074f6530018d028604ef08479e5f0488bfa0d12
     &:hover {
         background: ${(p) => p.background};
     }
@@ -69,12 +59,17 @@ const Title = styled.div`
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     font-weight: 400;
-<<<<<<< HEAD
+    text-decoration: none;
+
+    &:active {
+        text-decoration: none;
+    }
+    &:visited {
+        text-decoration: none;
+    }
     &:visited {
         color: red;
     }
-=======
->>>>>>> 8074f6530018d028604ef08479e5f0488bfa0d12
 `;
 
 const GithubIcon = styled(Github)`

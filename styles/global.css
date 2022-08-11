@@ -23,7 +23,7 @@ body {
 }
 
 h1 {
-    font-size: 80px;
+    font-size: 70px;
     line-height: 75px;
     color: #385761;
     font-weight: 600;
@@ -78,12 +78,12 @@ hr {
 }
 
 .axis text {
-    fill: #385761;
+    fill: white;
     font-size: 16px;
 }
 
 .axis line {
-    stroke: #385761;
+    stroke: white;
 
 }
 

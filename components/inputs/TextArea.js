@@ -31,11 +31,10 @@ export const StyledTextArea = styled.div`
         width: 100%;
         padding: 8px 12px 9px;
         border-radius: 7px;
-        border: 1px solid ${(props) => props.theme.color.brand.tertiary};
+        border: 1px solid ${(props) => props.theme.color.brand.primary};
         font-size: 18px;
         &:focus {
             outline: none;
-            background: #fff;
 
             box-shadow: 0 0 0 1px grey;
         }
@@ -63,7 +62,7 @@ const Label = styled.label`
     justify-content: center;
     padding: 5px;
     align-items: center;
-    color:  ${(props) => props.theme.color.brand.tertiary};
+    color:  ${(props) => props.theme.color.brand.primary};
     transition: all .5s ease;
     top: -12px;
     font-size: 14px;
@@ -72,11 +71,11 @@ const Label = styled.label`
     font-weight: bold;
     width: auto;
     padding: 5px;
-    background: white;
+
 `;
 
 const LabelText = styled.div`
-    background: white;
+
     z-index: 2;
     width: auto;
     margin-bottom: 12px;

@@ -3,15 +3,20 @@ export const theme = {
         brand: {
             primary: '#385761',
             secondary: '#E18D7A',
-            tertiary: '#65A4B8'
+            tertiary: '#85B5BA'
         },
         grey: {
-            lightest: '#F2f2f2',
+            lightest: '#FCFCFC',
             medium: '#7C858C',
             dark: '#36434E'
         },
         border: {
-            medium: '#A2B5C6'
+            light: '#FFFFFF',
+            medium: '#385761'
+        },
+        text: {
+            primary: '#455A64',
+            secondary: '#E18D7A'
         },
         background: {
             primary: '#FFFFFF',
