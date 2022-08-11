@@ -54,13 +54,15 @@ const Wrapper = styled.div`
     color: ${(p) => p.theme.color.grey.lightest};
     justify-content: space-around;
     padding: 80px;
+
+    @media (max-width: 900px) {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 `;
-// @media (max-width: 900px) {
-//     width: 100%;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 40px;
-// }
+
 const AppleIcon = styled(Apple)`
     height: 34px;
     width: 34px;
@@ -95,12 +97,7 @@ const Column = styled.div`
     gap: 20px;
     align-items: flex-start;
 `;
-// @media (max-width: 900px) {
-//     width: 100%;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 20px;
-// }
+
 const Social = styled.div`
     width: 220px;
     justify-content: center;

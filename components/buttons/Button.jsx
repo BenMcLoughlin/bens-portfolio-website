@@ -3,16 +3,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { Github } from '@styled-icons/bootstrap/Github';
 
-export const Button = ({ title = '', onClick, onSubmit = null, icon, background = 'primary', type, href }) => {
+export const Button = ({
+    title = '',
+    onClick = () => null,
+    onSubmit = null,
+    icon,
+    background = 'primary',
+    type,
+    href
+}) => {
     const isLinkButton = href?.length > 0;
     return (
-        <Wrapper
-            type={type}
-            background={background}
-            onClick={(e) => {
-                null;
-            }}
-            onSubmit={onSubmit && onSubmit}>
+        <Wrapper type={type} background={background} onClick={(e) => onClick(e)} onSubmit={onSubmit && onSubmit}>
             {icon === 'github' && <GithubIcon />}
             <Title>{title}</Title>
         </Wrapper>

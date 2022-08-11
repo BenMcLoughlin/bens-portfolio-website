@@ -74,6 +74,7 @@ export const ProjectCard = (props) => {
                     width="40%"
                     mobile_width="100%"
                     fontSize={20}
+                    mobile_fontSize={16}
                     fontWeight="bold"
                     textAlign={'left'}
                     color={contrastColor}>
@@ -91,6 +92,7 @@ export const ProjectCard = (props) => {
                     width="20%"
                     mobile_width="100%"
                     textAlign={align}
+                    mobile_textAlign={'center'}
                     fontWeight={200}
                     height="100%"
                     color={contrastColor}>
@@ -257,10 +259,10 @@ const Icons = styled.div`
     align-items: center;
     margin-top: 25px;
     gap: 10px;
+    margin-bottom: 40px;
     color: ${(p) => p.theme.color.brand.tertiary};
     @media (max-width: 768px) {
         width: 100%;
-        gap: 3px;
     }
 `;
 
@@ -280,8 +282,9 @@ const StackLabel = styled.div`
     transition: all 0.4s ease;
     text-align: center;
     display: flex;
+
     @media (max-width: 768px) {
-        padding: 2px;
+        display: none;
     }
 `;
 

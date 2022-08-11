@@ -8,7 +8,6 @@ import { Text, Row, Column } from '../html';
 import { RowSingleSelect } from '../buttons';
 import { chartColors } from '../../styles/chartColors';
 
-
 export const Chart = ({ year, title }) => {
     const [total, setTotal] = useState(0);
     //  const [width, setWidth] = useState(0);
@@ -19,13 +18,13 @@ export const Chart = ({ year, title }) => {
 
     useEffect(() => {
         const { data, total, tasks } = formatChartData(chartData, selectedYear);
+        const chartHeight = width > 768 ? 300 : 250
         setTasks(tasks);
         setTotal(total);
-        drawBarChart(data, 300, width * 0.8, 'chart');
+        drawBarChart(data, chartHeight, width * 0.8, 'chart');
 
         setTotal(total.toFixed());
     }, [selectedYear, width]);
-
 
     return (
         <Wrapper>
@@ -49,7 +48,7 @@ export const Chart = ({ year, title }) => {
             )}
 
             <Canvas id="chart" ref={canvasRef} />
-            <Column width="100%" marginTop={50} alignItems="center">
+            <Column width="100%"  alignItems="center">
                 <RowSingleSelect
                     width="100%"
                     options={[2018, 2019, 2020, 2021, 2022]}
@@ -70,6 +69,9 @@ const Wrapper = styled.div`
     height: 400px;
     flex-direction: column;
     align-items: flex-start;
+    @media (max-width: 768px) {
+        height: 300px;
+    }
 `;
 
 const Canvas = styled.div`

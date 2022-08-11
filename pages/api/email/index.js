@@ -1,10 +1,11 @@
 import sgMail from '@sendgrid/mail';
 
 function sendEmail(req, res) {
+
     const data = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
 
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
+  
     const { template, sendTo, email, name } = data;
 
     const templates = {

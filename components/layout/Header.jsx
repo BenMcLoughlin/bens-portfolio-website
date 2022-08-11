@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Button } from '../buttons/Button';
-
-import Image from 'next/image';
 import Head from 'next/head';
 import { Text } from '../';
 import * as Scroll from 'react-scroll';
@@ -29,17 +26,18 @@ export const Header = () => {
                     rel="stylesheet"
                 />
             </Head>
-
+            {width > 768 && (
+                <Left>
+                    <Text paddingRight={5} fontSize={20}>
+                        Ben
+                    </Text>
+                    <Text fontWeight={800} fontSize={20}>
+                        McLoughlin
+                    </Text>
+                </Left>
+            )}
             {(width > 768 || menuOpen) && (
                 <>
-                    <Left>
-                        <Text paddingRight={5} fontSize={20}>
-                            Ben
-                        </Text>
-                        <Text fontWeight={800} fontSize={20}>
-                            McLoughlin
-                        </Text>
-                    </Left>
                     <Right>
                         <ScrollLink
                             activeClass="active"
@@ -70,12 +68,16 @@ export const Header = () => {
                             duration={500}>
                             <ClickText>Contact</ClickText>
                         </ScrollLink>
-                        <HR />
-                        <Link href="https://github.com/BenMcLoughlin/bens-portfolio-website">
-                            <a target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                                <ClickText>View This Repo</ClickText>
-                            </a>
-                        </Link>
+                        {width > 1200 && (
+                            <>
+                                <HR />
+                                <Link href="https://github.com/BenMcLoughlin/bens-portfolio-website">
+                                    <a target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                                        <ClickText>View This Repo</ClickText>
+                                    </a>
+                                </Link>
+                            </>
+                        )}
                     </Right>
                     <Social>
                         <Link href="https://github.com/BenMcLoughlin">
@@ -172,6 +174,7 @@ const Right = styled.div`
     }
     @media (max-width: 768px) {
         align-items: flex-end;
+        padding-top: 70px;
         flex-direction: column;
     }
 `;

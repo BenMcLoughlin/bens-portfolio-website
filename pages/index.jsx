@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { Column, Row, Section, Text, Chart, ProjectCard, CommunityCard, Carousel, Button } from '../components';
+import { Column, Row, Section, Text, Chart, ProjectCard, CommunityCard, Carousel, Button, Toast } from '../components';
 import { FormText, TextArea } from '../components/inputs';
 import { Header, Footer, Spinner, SectionHeader } from '../components/layout';
-import ben_profile_photo from '../public/assets/ben_profile_photo.png';
 import shophopper_app_screenshot from '../public/assets/shophopper_app_screenshot.png';
 import shophopper_website_screenshot from '../public/assets/shophopper_website_screenshot.png';
 import shophopper_db_screenshot from '../public/assets/shophopper_db_screenshot.png';
@@ -27,35 +25,29 @@ export default function Home() {
     const [size] = useWindowSize();
 
     const sendEmail = async (e) => {
-        e.preventDefault();
-
         setIsLoading(true);
-
-        const res = await fetch('/api/email', {
+        await fetch('/api/email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, sendTo: 'benmcl@shaw.ca', message, template: 'contactUs' })
         });
 
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 300);
-
         setEmailSent(true);
         setName('');
         setEmail('');
+        setIsLoading(false);
     };
 
     return (
         <Wrapper>
             <Header />
             <Content>
-                <Section alignContent="flex-start" height={500} width="80%" mobile_width="100%" paddingBottom={20}>
+                <Section alignContent="flex-start" height={500} width="80%" mobile_width="90%" paddingBottom={20}>
                     <HeroContent>
                         <Title color="primary">Trust is priceless.</Title>
                         <Title color="secondary">Let Ben earn yours.</Title>
                         <Text fontSize={20} mobile_fontSize={16} width="70%" mobile_width={'100%'}>
-                            Full-stack Developer Web and mobile app developer specializeing in React/Node.js.
+                            Full-stack Developer Web and mobile app developer specializing in React/Node.js.
                         </Text>
                     </HeroContent>
                     <BackgroundImageWrapper>
@@ -65,7 +57,7 @@ export default function Home() {
 
                 <Section width="100%" flexDirection="column" gap={0}>
                     <SectionHeader name="about" number={'01'} text="" title="About Ben" noBottomBorder={true} />
-                    <Row width="100%" alignItems="flex-start">
+                    <Row width="100%" alignItems="flex-start" mobile_alignItems="center">
                         <Carousel width="60%">
                             {[...new Array(5)].map((_, i) => (
                                 <ProfileImageWrapper key={i}>
@@ -79,7 +71,6 @@ export default function Home() {
                                 </ProfileImageWrapper>
                             ))}
                         </Carousel>
-
                         <Text
                             fontSize={14}
                             lineHeight={29}
@@ -166,13 +157,13 @@ export default function Home() {
                     <Row>
                         <CommunityCard
                             imageSrc="/assets/logos/edabit_logo.png"
-                            text="Ben&apos;s score is in the top 10% on the coding challenge website Edabit. "
+                            text="Ben's score is in the top 10% on the coding challenge website Edabit. "
                             link="https://edabit.com/user/SYEuojZtP6yLXryHvn"
                             title={'Edabit'}
                         />
                         <CommunityCard
                             imageSrc="/assets/logos/dev_icon.png"
-                            text="Every blog post Ben has written is on the Dev.to"
+                            text="Keep an eye out for Ben's next blog post on Dev.to"
                             link="https://dev.to/benmcloughlin"
                             title={'Dev.to'}
                         />
@@ -185,7 +176,7 @@ export default function Home() {
                         />
                     </Row>
                 </Section>
-                <Section width="90%" padding={40} flexDirection="column">
+                <Section flexDirection="column">
                     <SectionHeader name="contact" id="contact" number={'05'} text="" title="Get In Touch" />
                     <Form>
                         {isLoading ? (
@@ -217,7 +208,7 @@ export default function Home() {
                     </Form>
                 </Section>
             </Content>
-
+            {emailSent && <Toast text="Email sent!" />}
             <Footer />
         </Wrapper>
     );
@@ -229,6 +220,7 @@ const Wrapper = styled.div`
     width: 100%;
     height: auto;
     background: radial-gradient(circle at right, #e7eced, #fcfcfc);
+    position: relative;
 `;
 
 const Content = styled.div`
