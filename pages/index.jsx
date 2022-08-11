@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { Column, Row, Section, Text, Chart, ProjectCard, CommunityCard, Carousel, Button, Toast } from '../components';
+import { Column, Row, Section, Text, Chart, ArrowStack, Carousel, Button, Toast } from '../components';
+import { ProjectCard, CommunityCard } from '../components/cards';
 import { FormText, TextArea } from '../components/inputs';
 import { Header, Footer, Spinner, SectionHeader } from '../components/layout';
 import shophopper_app_screenshot from '../public/assets/shophopper_app_screenshot.png';
 import shophopper_website_screenshot from '../public/assets/shophopper_website_screenshot.png';
 import shophopper_db_screenshot from '../public/assets/shophopper_db_screenshot.png';
 import savvy_plan_screenshot from '../public/assets/savvy_plan_screenshot.png';
-import arrows from '../public/assets/arrows.png';
 import { useWindowSize } from '../utils';
 
 export default function Home() {
@@ -50,9 +50,7 @@ export default function Home() {
                             Full-stack Developer Web and mobile app developer specializing in React/Node.js.
                         </Text>
                     </HeroContent>
-                    <BackgroundImageWrapper>
-                        <Image src={arrows} width={300} height={300} placeholder="blur" />
-                    </BackgroundImageWrapper>
+                    <ArrowStack />
                 </Section>
 
                 <Section width="100%" flexDirection="column" gap={0}>
@@ -108,7 +106,7 @@ export default function Home() {
                         dailyUsers="98"
                         hours="742"
                         role="Full-stack mobile"
-                        date="Nov 2021 - July2022"
+                        date="2021 - 2022"
                         stack={['ReactNative', 'Expo', 'Sentry', 'IOS', 'Android']}
                         align="left"
                         image={shophopper_app_screenshot}
@@ -121,7 +119,7 @@ export default function Home() {
                         role="Front-end Developer"
                         dailyUsers="44"
                         hours="67"
-                        date="April 2022"
+                        date="04 - 2022"
                         stack={['React', 'NextJs', 'Figma', 'StyledComponents']}
                         align="right"
                         projectTheme="dark"
@@ -133,7 +131,7 @@ export default function Home() {
                         teamSize="4"
                         dailyUsers="44"
                         hours="67"
-                        date="April 2022"
+                        date="2021 - 2022"
                         stack={['AWS', 'PostgreSQL', 'Prisma', 'NextJs']}
                         align="left"
                         image={shophopper_db_screenshot}
@@ -145,7 +143,7 @@ export default function Home() {
                         teamSize="4"
                         dailyUsers="44"
                         hours="67"
-                        date="April 2022"
+                        date="2019 - 2021"
                         stack={['React', 'MongoDB', 'Express', 'D3']}
                         align="right"
                         projectTheme="dark"
@@ -263,7 +261,7 @@ const Title = styled.div`
 const HeroContent = styled.div`
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 70%;
 
     text-align: left;
     margin-left: -10px;
@@ -289,13 +287,5 @@ const Form = styled.div`
     @media (max-width: 768px) {
         width: 100%;
         padding: 5px;
-    }
-`;
-const BackgroundImageWrapper = styled.div`
-    position: absolute;
-    right: 40px;
-    bottom: 0px;
-    @media (max-width: 1000px) {
-        opacity: 0.2;
     }
 `;
