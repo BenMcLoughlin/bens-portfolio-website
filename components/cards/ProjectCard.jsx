@@ -22,9 +22,11 @@ import { Expo } from '@styled-icons/simple-icons/Expo';
 import { Apple } from '@styled-icons/boxicons-logos/Apple';
 import { Android } from '@styled-icons/fa-brands/Android';
 import { ChartArea } from '@styled-icons/fa-solid/ChartArea';
+import { ExternalLink } from '@styled-icons/feather/ExternalLink';
 import shophopper from '../../public/assets/shop_hopper_circle_logo.png';
 import shopify from '../../public/assets/shopify_icon.png';
 import { theme } from '../../styles/theme';
+import Link from 'next/link';
 
 export const ProjectCard = (props) => {
     const ScrollLink = Scroll.Link;
@@ -54,7 +56,7 @@ export const ProjectCard = (props) => {
     };
 
     const [menuOpen, setMenuOpen] = useState(false);
-    const { teamSize, dailyUsers, hours, date, role, stack, title, projectTheme, align, image } = props;
+    const { teamSize, dailyUsers, hours, date, role, stack, title, projectTheme, align, image, link } = props;
 
     const [setEntered, enteredScreen] = useOnScreen({ rootMargin: '-20%', threshold: 0 });
 
@@ -81,19 +83,16 @@ export const ProjectCard = (props) => {
                     {title}
                 </Text>
 
-                {width > 768 && (
-                    <Date color={contrastColor}>
-                        {date}
-                    </Date>
-                )}
+                {width > 768 && <Date color={contrastColor}>{date}</Date>}
             </TopBar>
             <CustomRow align={align}>
                 <Text
                     width="20%"
                     mobile_width="100%"
-                    textAlign={align}
+                    textAlign={'left'}
                     mobile_textAlign={'center'}
                     fontWeight={200}
+                    fontSize={14}
                     height="100%"
                     color={contrastColor}>
                     {props.description}
@@ -142,7 +141,7 @@ export const ProjectCard = (props) => {
                         ))}
                     </Icons>
                 </Column>
-                <Column width="30%" mobile_width="100%" alignContent="center" mobile_alignContent="center">
+                <Column width={350} mobile_width="100%" alignContent="center" mobile_alignContent="center">
                     {title.includes('App') ? (
                         <Column width={'40%'} mobile_width="60%" alignItems="center" alignContent="center">
                             <Image alt="screenshot" src={image} placeholder="blur" layout="intrinsic" />
@@ -152,6 +151,13 @@ export const ProjectCard = (props) => {
                     )}
                 </Column>
             </CustomRow>
+            <LinkWrapper>
+                <Link href={link}>
+                    <a target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                        <ExternalLink size={24} color={contrastColor} />
+                    </a>
+                </Link>
+            </LinkWrapper>
         </Wrapper>
     );
 };
@@ -279,8 +285,8 @@ const StackLabel = styled.div`
     height: 30px;
     color: white;
     position: absolute;
-    top: 10px;
-    left: 50px;
+    top: 40px;
+    left: 10px;
     text-align: left;
     padding: 7px;
     border-radius: 5px;
@@ -299,8 +305,17 @@ const StackLabel = styled.div`
 const WithHover = styled.div`
     cursor: pointer;
     position: relative;
-    z-index: 10;
+    z-index: 100;
     &:hover ${StackLabel} {
         opacity: 1;
     }
+`;
+
+const LinkWrapper = styled.div`
+    position: absolute;
+    cursor: pointer;
+    bottom: 10px;
+    right: 20px;
+    height: 40px;
+    width: 40px;
 `;
