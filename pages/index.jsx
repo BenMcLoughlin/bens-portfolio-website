@@ -7,7 +7,7 @@ import { FormText, TextArea } from '../components/inputs';
 import { Header, Footer, Spinner, SectionHeader } from '../components/layout';
 import shophopper_app_screenshot from '../public/assets/shophopper_app_screenshot.png';
 import shophopper_website_screenshot from '../public/assets/shophopper_website_screenshot.png';
-import shophopper_db_screenshot from '../public/assets/shophopper_db_screenshot.png';
+import shopify_screenshot from '../public/assets/shopify_screenshot.png';
 import savvy_plan_screenshot from '../public/assets/savvy_plan_screenshot.png';
 import { useWindowSize } from '../utils';
 
@@ -44,8 +44,8 @@ export default function Home() {
             <Content>
                 <Section alignContent="flex-start" height={500} width="80%" mobile_width="90%" paddingBottom={20}>
                     <HeroContent>
-                        <Title color="primary">Trust is priceless.</Title>
-                        <Title color="secondary">Let Ben earn yours.</Title>
+                        <Title color="primary">An App can look good.</Title>
+                        <Title color="secondary">But code speaks for itself.</Title>
                         <Text fontSize={20} mobile_fontSize={16} width="70%" mobile_width={'100%'}>
                             Full-stack Developer Web and mobile app developer specializing in React/Node.js.
                         </Text>
@@ -77,10 +77,10 @@ export default function Home() {
                             textAlign="left"
                             mobile_textAlign={'center'}
                             mobile_width={'90%'}>
-                            From Kelowna B.C, Ben is a 34-year-old husband and a father. He served in Afghanistan 2009
-                            and after releasing became a Forest Firefighter. He studied business for his undergrad and
-                            computer science in his MBA. He&apos;s now honing his craft so he can become one of the best
-                            Full-Stack Developers in Canada.
+                            From Kelowna B.C, Ben is a 34-year-old husband and a father. Since 2018, he&apos;s been
+                            working with tech start-ups in Kelowna, bringing them from ideas to fully functioning
+                            MVP&apos;s. He&apos;s built a fully functioning web and mobile applications from front to
+                            back and specializes in anything JavaScript.
                         </Text>
                     </Row>
                 </Section>
@@ -91,7 +91,7 @@ export default function Home() {
                     leads to mastery."
                         title="Journey to Mastery"
                         sectionTheme="dark"
-                        stat1="4.5k"
+                        stat1="6.5k"
                         stat2="10k"
                     />
                     <Chart />
@@ -103,12 +103,13 @@ export default function Home() {
                         description=" This app enables users to shop for local fashion apparel in one place. We gather the inventories of
                     local boutique stores and copy the data into our database. Ben built the app using React Native and Expo."
                         teamSize="3"
-                        dailyUsers="98"
+                        dailyUsers="212"
                         hours="742"
                         role="Full-stack mobile"
-                        date="2021 - 2022"
+                        date="2022"
                         stack={['ReactNative', 'Expo', 'Sentry', 'IOS', 'Android']}
                         align="left"
+                        link="https://apps.apple.com/us/app/shophopper/id1604915084"
                         image={shophopper_app_screenshot}
                     />
                     <ProjectCard
@@ -116,38 +117,28 @@ export default function Home() {
                         description=" This website serves as the landing page for ShopHopper with the goal of getting them to
                     download the mobile app."
                         teamSize="4"
-                        role="Front-end Developer"
-                        dailyUsers="44"
+                        role="Full-Stack Developer"
+                        dailyUsers="129"
                         hours="67"
-                        date="04 - 2022"
+                        date="2021"
                         stack={['React', 'NextJs', 'Figma', 'StyledComponents']}
                         align="right"
                         projectTheme="dark"
+                        link="https://shophopper.ca/"
                         image={shophopper_website_screenshot}
                     />
                     <ProjectCard
-                        title="ShopHopper Database"
-                        description="Ben helped write scripts that gather the inventories of local boutique stores and copy the data into our database."
-                        teamSize="4"
-                        dailyUsers="44"
-                        hours="67"
-                        date="2021 - 2022"
+                        title="Shopify Sales Channel"
+                        description="Stores with shopify accounts can download the Shophopper sales channel app and integrate their billing and product management with the ShopHopper app."
+                        teamSize="2"
+                        dailyUsers="12"
+                        role="Full-Stack Developer"
+                        hours="267"
+                        date="2022"
                         stack={['AWS', 'PostgreSQL', 'Prisma', 'NextJs']}
                         align="left"
-                        image={shophopper_db_screenshot}
-                    />
-
-                    <ProjectCard
-                        title="Financial Planning Software"
-                        description="Ben built a financial planning platform that uses javascript to provide real time web brower responses to changes in a financial plan. "
-                        teamSize="4"
-                        dailyUsers="44"
-                        hours="67"
-                        date="2019 - 2021"
-                        stack={['React', 'MongoDB', 'Express', 'D3']}
-                        align="right"
-                        projectTheme="dark"
-                        image={savvy_plan_screenshot}
+                        link="https://apps.shopify.com/shophopper?search_id=f1ac1859-a6a8-40d1-a487-1d12ee9b0d14&surface_detail=shophopper&surface_inter_position=1&surface_intra_position=1&surface_type=search"
+                        image={shopify_screenshot}
                     />
                 </Section>
                 <Section width="100%" flexDirection="column" background="#385761">
@@ -250,7 +241,7 @@ const ProfileImageWrapper = styled.div`
     }
 `;
 const Title = styled.div`
-    font-size: 60px;
+    font-size: 55px;
     font-weight: 900;
     color: ${(p) => p.theme.color.text[p.color]};
     @media (max-width: 768px) {
@@ -261,7 +252,7 @@ const Title = styled.div`
 const HeroContent = styled.div`
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 80%;
 
     text-align: left;
     margin-left: -10px;
