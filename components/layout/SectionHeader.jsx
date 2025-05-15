@@ -45,7 +45,7 @@ export const SectionHeader = (props) => {
                 {width > 768 && stat1 && (
                     <Column alignItems="center" width={140} justifyContent="space-around">
                         <Text fontSize={40} width="100%" textAlign="left" color="white" mobile_width="90%">
-                            4.5k
+                            7.9k
                         </Text>
                         <RotatedLine contrastColor={contrastColor} />
                         <Text fontSize={40} width="100%" textAlign="right" color={contrastColor}>
