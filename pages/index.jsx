@@ -87,8 +87,8 @@ export default function Home() {
                 <Section width="100%" flexDirection="column" background="#385761">
                     <SectionHeader
                         number={'02'}
-                        text="Since 2018 Ben has been tracking his hours coding to one day see if the maxim holds true that 10,000
-                    leads to mastery."
+                        text="This tracks Ben's direct hours working with code.
+                    "
                         title="Journey to Mastery"
                         sectionTheme="dark"
                         stat1="6.5k"

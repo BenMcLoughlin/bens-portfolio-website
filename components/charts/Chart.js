@@ -18,7 +18,7 @@ export const Chart = ({ year, title }) => {
 
     useEffect(() => {
         const { data, total, tasks } = formatChartData(chartData, selectedYear);
-        const chartHeight = width > 768 ? 300 : 250
+        const chartHeight = width > 768 ? 300 : 250;
         setTasks(tasks);
         setTotal(total);
         drawBarChart(data, chartHeight, width * 0.8, 'chart');
@@ -36,22 +36,24 @@ export const Chart = ({ year, title }) => {
                         <Hours fontSize={14}>{total} hrs</Hours>
                     </YearCell>
                     <Vr />
-                    {Object.entries(tasks).map(([task, value]) => (
-                        <Cell>
-                            <Task>{task}</Task>
-                            <Hr />
-                            <Circle color={chartColors[task]} />
-                            <Hours>{value.toFixed()} hrs</Hours>
-                        </Cell>
-                    ))}
+                    {Object.entries(tasks)
+                        .slice(0, 4)
+                        .map(([task, value]) => (
+                            <Cell>
+                                <Task>{task}</Task>
+                                <Hr />
+                                <Circle color={chartColors[task]} />
+                                <Hours>{value.toFixed()} hrs</Hours>
+                            </Cell>
+                        ))}
                 </Row>
             )}
 
             <Canvas id="chart" ref={canvasRef} />
-            <Column width="100%"  alignItems="center">
+            <Column width="100%" alignItems="center">
                 <RowSingleSelect
                     width="100%"
-                    options={[2018, 2019, 2020, 2021, 2022]}
+                    options={[2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]}
                     handleChange={(year) => setSelectedYear(year)}
                     selected={selectedYear}
                 />

@@ -8,7 +8,8 @@ export const formatChartData = (data, year) => {
     let total = 0;
 
     let tasks = {};
-
+    console.log('years', years);
+    console.log('selectedYear', selectedYear);
     const d = years[selectedYear].reduce((acc, n) => {
         const month = new Date(n.date).getMonth() + 1;
 

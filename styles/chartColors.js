@@ -9,5 +9,10 @@ export const chartColors = {
     Ruby: '#66cdaa',
     Typescript: '#6f9998',
     'Relational Databases': '#B0CFE3',
-    'Rest Api': '#ffdc73'
+    'Rest Api': '#ffdc73',
+    'Koodo Backend': '#ffdc73',
+    'Telus Backend': '#ffdc73',
+    'Koodo Frontend': '#88a99d',
+    'Dev Ops': '#66cdaa',
+    'Learning Code Frameworks': '#E18D7A'
 };
